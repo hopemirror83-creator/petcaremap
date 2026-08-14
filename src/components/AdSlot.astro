@@ -1,0 +1,38 @@
+---
+interface Props {
+  position?: 'top' | 'bottom';
+}
+
+const { position = 'top' } = Astro.props;
+const isBottom = position === 'bottom';
+const label = isBottom ? '하단 광고' : '상단 광고';
+---
+
+<section class={`ad-shell ad-section ad-section-${position}`} aria-label={label}>
+  {isBottom ? (
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-format="autorelaxed"
+      data-ad-client="ca-pub-2849585811939559"
+      data-ad-slot="8304886068"
+    ></ins>
+  ) : (
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-2849585811939559"
+      data-ad-slot="5476608409"
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    ></ins>
+  )}
+</section>
+
+<script is:inline>
+  try {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  } catch (error) {
+    // Ad blockers or local previews can block AdSense. The page should keep rendering.
+  }
+</script>

@@ -1,0 +1,36 @@
+{
+  "name": "petcare-seo",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "import:csv": "node scripts/import-public-csv.mjs",
+    "d1:seed": "npx wrangler d1 execute petcaremap-db --remote --file data/d1-public-businesses.sql",
+    "d1:enrichment": "node scripts/write-d1-enrichment-sql.mjs && npx wrangler d1 execute petcaremap-db --remote --file data/d1-enrichment.sql",
+    "build:data": "node scripts/build-site-data.mjs && node scripts/build-pet-service-site-data.mjs",
+    "sync:public-data": "node scripts/sync-public-data.mjs",
+    "sync:pet-services": "node scripts/sync-pet-service-public-data.mjs",
+    "sync:naver-local": "node scripts/sync-naver-local.mjs",
+    "collect:naver-reviews": "node scripts/collect-naver-reviews.mjs",
+    "generate:review-pages": "node scripts/generate-review-pages.mjs",
+    "indexing:list": "node scripts/write-indexing-targets.mjs",
+    "clean": "node scripts/clean-dist.mjs",
+    "build": "npm run build:data && npm run indexing:list && npm run clean && astro build",
+    "deploy": "npm run build && npx wrangler pages deploy dist --project-name petcaremap --branch main --commit-dirty=true",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "astro": "^5.0.0",
+    "proj4": "^2.21.0",
+    "typescript": "^5.6.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.105.0"
+  }
+}

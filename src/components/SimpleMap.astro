@@ -1,0 +1,109 @@
+---
+const { item, items, title } = Astro.props;
+const clientId = import.meta.env.PUBLIC_NAVER_MAP_CLIENT_ID || '';
+
+function toCoordinate(target: any) {
+  if (!target) return null;
+  const mapx = Number(target.mapx);
+  const mapy = Number(target.mapy);
+  const rawLng = Number(target.lng) || (mapx > 1000000 ? mapx / 10000000 : null);
+  const rawLat = Number(target.lat) || (mapy > 1000000 ? mapy / 10000000 : null);
+  const lat = rawLat && rawLat >= 33 && rawLat <= 39 ? rawLat : null;
+  const lng = rawLng && rawLng >= 124 && rawLng <= 132 ? rawLng : null;
+  if (!lat || !lng) return null;
+  return {
+    name: target.name,
+    displayAddress: target.displayAddress,
+    roadAddress: target.roadAddress,
+    lotAddress: target.lotAddress,
+    naverMapUrl: target.naverMapUrl,
+    lat,
+    lng
+  };
+}
+
+const rawItems = Array.isArray(items) ? items : item ? [item] : [];
+const mapItems = rawItems.map(toCoordinate).filter(Boolean);
+const primary = mapItems[0];
+const centerLat = mapItems.length ? mapItems.reduce((sum: number, target: any) => sum + target.lat, 0) / mapItems.length : null;
+const centerLng = mapItems.length ? mapItems.reduce((sum: number, target: any) => sum + target.lng, 0) / mapItems.length : null;
+const mapIdBase = item?.sourceId || item?.slug || title || 'petcare-map';
+const mapId = `naver-map-${String(mapIdBase).replace(/[^\w-]/g, '-')}`;
+const hasMap = Boolean(clientId && mapItems.length && centerLat && centerLng);
+const isGroupMap = mapItems.length > 1;
+---
+
+<div class="map-box map-box-real">
+  <div class="map-copy">
+    <strong>{title || primary?.name || '지도'}</strong>
+    {isGroupMap ? (
+      <span>지도에 표시되는 업체 {mapItems.length.toLocaleString('ko-KR')}곳을 함께 확인할 수 있습니다.</span>
+    ) : (
+      <span>{primary?.displayAddress || primary?.roadAddress || primary?.lotAddress || '주소 확인 필요'}</span>
+    )}
+    {!isGroupMap && primary?.naverMapUrl && (
+      <a class="primary-link" href={primary.naverMapUrl} target="_blank" rel="noopener">네이버 지도에서 크게 보기</a>
+    )}
+  </div>
+  {hasMap ? (
+    <div id={mapId} class="naver-map" aria-label={`${title || primary?.name || '업체'} 지도`}></div>
+  ) : (
+    <div class="naver-map map-fallback">
+      <strong>지도 표시 준비 중</strong>
+      <span>좌표 또는 네이버 지도 키가 확인되면 실제 지도가 표시됩니다.</span>
+    </div>
+  )}
+</div>
+
+{hasMap && (
+  <script
+    is:inline
+    src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${clientId}`}
+  ></script>
+)}
+
+{hasMap && (
+  <script define:vars={{ mapId, centerLat, centerLng, markers: mapItems, isGroupMap }} is:inline>
+    function drawPetcareMap() {
+      if (!window.naver?.maps) return;
+      const center = new naver.maps.LatLng(centerLat, centerLng);
+      const map = new naver.maps.Map(mapId, {
+        center,
+        zoom: isGroupMap ? 14 : 16,
+        scaleControl: false,
+        logoControl: false,
+        mapDataControl: false
+      });
+
+      const bounds = new naver.maps.LatLngBounds();
+      markers.forEach((marker) => {
+        const position = new naver.maps.LatLng(marker.lat, marker.lng);
+        bounds.extend(position);
+        const mapMarker = new naver.maps.Marker({
+          position,
+          map,
+          title: marker.name
+        });
+
+        if (isGroupMap) {
+          const infoWindow = new naver.maps.InfoWindow({
+            content: `<div class="naver-info-window"><strong>${marker.name}</strong><span>${marker.displayAddress || marker.roadAddress || marker.lotAddress || ''}</span></div>`
+          });
+          naver.maps.Event.addListener(mapMarker, 'click', () => {
+            infoWindow.open(map, mapMarker);
+          });
+        }
+      });
+
+      if (isGroupMap && markers.length > 1) {
+        map.fitBounds(bounds, { top: 36, right: 36, bottom: 36, left: 36 });
+      }
+    }
+
+    if (window.naver?.maps) {
+      drawPetcareMap();
+    } else {
+      window.addEventListener('load', drawPetcareMap);
+    }
+  </script>
+)}

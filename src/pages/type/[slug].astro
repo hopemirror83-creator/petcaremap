@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BusinessCard from '../../components/BusinessCard.astro';
+import SimpleMap from '../../components/SimpleMap.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import InArticleAd from '../../components/InArticleAd.astro';
+import { areaGroups, typeGroups } from '../../data/siteData';
+
+export function getStaticPaths() {
+  return typeGroups.map((group: any) => ({ params: { slug: group.slug }, props: { group } }));
+}
+
+const { group } = Astro.props;
+const title = group.title;
+const description = `${group.description} 지역별 병원, 후기, 방문 전 확인사항을 정리했습니다.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-head">
+    <p class="eyebrow">진료유형 묶음</p>
+    <h1>{group.title}</h1>
+    <p>{description}</p>
+  </section>
+
+  <AdSlot position="top" />
+
+  <section class="decision-section prose-section">
+    <article>
+      <h2>{group.name} 확인 기준</h2>
+      {(group.body || []).map((paragraph: string) => <p>{paragraph}</p>)}
+    </article>
+  </section>
+
+  <section class="decision-section">
+    <div class="section-heading">
+      <span>지도</span>
+      <h2>{group.name} 병원 위치</h2>
+      <p>이 유형에 포함된 병원을 지도에서 함께 비교할 수 있습니다.</p>
+    </div>
+    <SimpleMap items={group.items} title={group.name} />
+  </section>
+
+  <InArticleAd />
+
+  <section class="decision-section section-tint">
+    <div class="section-heading">
+      <span>목록</span>
+      <h2>{group.items.length.toLocaleString('ko-KR')}곳 정리</h2>
+    </div>
+    <div class="business-grid">{group.items.map((item: any) => <BusinessCard item={item} />)}</div>
+  </section>
+
+  <section class="decision-section">
+    <div class="section-heading"><span>지역 묶음</span><h2>지역별로 다시 보기</h2></div>
+    <div class="topic-grid">
+      {areaGroups.slice(0, 8).map((area: any) => (
+        <a class="topic-card" href={`/area/${area.slug}/`}><strong>{area.name}</strong><span>{area.items.length}곳</span></a>
+      ))}
+    </div>
+  </section>
+
+  <AdSlot position="bottom" />
+</BaseLayout>

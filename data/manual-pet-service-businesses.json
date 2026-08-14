@@ -1,0 +1,29 @@
+[
+  {
+    "source": "naver-local",
+    "sourceId": "manual-grooming-incheon-seohae-seoknam-jungdeuldog",
+    "businessType": "grooming",
+    "name": "정들개",
+    "displayName": "정들개",
+    "category": "반려동물>반려동물미용",
+    "city": "인천",
+    "district": "서해구",
+    "dong": "석남동",
+    "roadAddress": "인천광역시 서해구 신석로77번길 16 상가 1층 정들개",
+    "lotAddress": "인천광역시 서해구 석남동 453-6 상가 1층 정들개",
+    "phone": "",
+    "lat": 37.5113739,
+    "lng": 126.670756,
+    "mapx": 1266707560,
+    "mapy": 375113739,
+    "openingHours": "",
+    "operationStatus": "네이버 장소 확인",
+    "operationStatusCode": "",
+    "permitNo": "",
+    "permitDate": "",
+    "dataBaseDate": "2026-08-04",
+    "services": ["애견미용", "목욕", "위생미용", "발톱 관리"],
+    "homepage": "https://www.instagram.com/jung_d_dog",
+    "naverMapUrl": "https://map.naver.com/p/search/%EC%A0%95%EB%93%A4%EA%B0%9C"
+  }
+]

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import InArticleAd from '../../components/InArticleAd.astro';
+import { petServiceGroups } from '../../data/petServiceData';
+
+export function getStaticPaths() {
+  return petServiceGroups.map((group: any) => ({ params: { slug: group.slug }, props: { group } }));
+}
+
+const { group } = Astro.props;
+const description = group.description;
+---
+
+<BaseLayout title={group.title} description={description}>
+  <section class="page-head">
+    <p class="eyebrow">반려동물 서비스 묶음</p>
+    <h1>{group.title}</h1>
+    <p>{description}</p>
+  </section>
+
+  <AdSlot position="top" />
+
+  <section class="decision-section prose-section">
+    <article>
+      <h2>{group.typeLabel} 선택 기준</h2>
+      {group.body.map((paragraph: string) => <p>{paragraph}</p>)}
+    </article>
+  </section>
+
+  <InArticleAd />
+
+  <section class="decision-section section-tint">
+    <div class="section-heading">
+      <span>목록</span>
+      <h2>{group.items.length.toLocaleString('ko-KR')}곳 정리</h2>
+      <p>{group.city} {group.district} {group.typeLabel} 업체를 정리했습니다. 후기가 풍부한 곳부터 네이버 후기 분석을 순차적으로 보강합니다.</p>
+    </div>
+    <div class="service-card-grid">
+      {group.items.map((item: any) => (
+        <a class="service-card" href={`/${item.typePath}/${item.slug}/`}>
+          <strong>{item.name}</strong>
+          <span>{item.areaLabel} · {item.typeLabel}</span>
+          <p>{item.displayAddress || item.roadAddress || item.lotAddress}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <AdSlot position="bottom" />
+</BaseLayout>

@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "fetchedAt": "2026-08-04T06:33:11.623Z",
+  "targetLocalCodes": [
+    "3561000"
+  ],
+  "activeStatusCode": "01",
+  "diagnostics": [
+    {
+      "ok": true,
+      "source": "grooming",
+      "status": 200,
+      "localCode": "3561000",
+      "pageNo": 1,
+      "itemCount": 100,
+      "totalCount": 118,
+      "sample": "{\"response\":{\"body\":{\"dataType\":\"JSON\",\"items\":{\"item\":[{\"BPLC_NM\":\"몽돌(mongdoll)\",\"CLSBIZ_YMD\":\"\",\"CRD_INFO_X\":\"171416.985178998\",\"CRD_INFO_Y\":\"449695.352028664\",\"DAT_UPDT_PNT\":\"2026-07-30 22:32:50\",\"DAT_UPDT_SE\":\"I\",\"DTL_SALS_STTS_CD\":\"0000\",\"DTL_SALS_STTS_NM\":\"정상\",\"DTL_TASK_SE_NM\":\"\",\"LAST_MDFCN_P",
+      "url": "https://apis.data.go.kr/1741000/pet_grooming/info?serviceKey=REDACTED&pageNo=1&numOfRows=100&returnType=json&cond%5BSALS_STTS_CD%3A%3AEQ%5D=01&cond%5BOPN_ATMY_GRP_CD%3A%3AEQ%5D=3561000"
+    },
+    {
+      "ok": true,
+      "source": "grooming",
+      "status": 200,
+      "localCode": "3561000",
+      "pageNo": 2,
+      "itemCount": 18,
+      "totalCount": 118,
+      "sample": "{\"response\":{\"body\":{\"dataType\":\"JSON\",\"items\":{\"item\":[{\"BPLC_NM\":\"수애견\",\"CLSBIZ_YMD\":\"\",\"CRD_INFO_X\":\"\",\"CRD_INFO_Y\":\"\",\"DAT_UPDT_PNT\":\"2026-07-01 13:15:50\",\"DAT_UPDT_SE\":\"I\",\"DTL_SALS_STTS_CD\":\"0000\",\"DTL_SALS_STTS_NM\":\"정상\",\"DTL_TASK_SE_NM\":\"\",\"LAST_MDFCN_PNT\":\"2022-04-28 18:11:29\",\"LCPMT_RTRCN_YM",
+      "url": "https://apis.data.go.kr/1741000/pet_grooming/info?serviceKey=REDACTED&pageNo=2&numOfRows=100&returnType=json&cond%5BSALS_STTS_CD%3A%3AEQ%5D=01&cond%5BOPN_ATMY_GRP_CD%3A%3AEQ%5D=3561000"
+    },
+    {
+      "ok": true,
+      "source": "boarding",
+      "status": 200,
+      "localCode": "3561000",
+      "pageNo": 1,
+      "itemCount": 75,
+      "totalCount": 75,
+      "sample": "{\"response\":{\"body\":{\"dataType\":\"JSON\",\"items\":{\"item\":[{\"BPLC_NM\":\"인천 서구 강아지유치원 27퍼피짐\",\"CLSBIZ_YMD\":\"\",\"CRD_INFO_X\":\"\",\"CRD_INFO_Y\":\"\",\"DAT_UPDT_PNT\":\"2026-07-01 13:15:49\",\"DAT_UPDT_SE\":\"I\",\"DTL_SALS_STTS_CD\":\"0000\",\"DTL_SALS_STTS_NM\":\"정상\",\"DTL_TASK_SE_NM\":\"\",\"LAST_MDFCN_PNT\":\"2026-06-17 13:23:21\",",
+      "url": "https://apis.data.go.kr/1741000/animal_boarding/info?serviceKey=REDACTED&pageNo=1&numOfRows=100&returnType=json&cond%5BSALS_STTS_CD%3A%3AEQ%5D=01&cond%5BOPN_ATMY_GRP_CD%3A%3AEQ%5D=3561000"
+    },
+    {
+      "ok": true,
+      "source": "boarding",
+      "status": 200,
+      "localCode": "3561000",
+      "pageNo": 2,
+      "itemCount": 0,
+      "totalCount": 75,
+      "sample": "{\"response\":{\"body\":{\"dataType\":\"JSON\",\"items\":{\"item\":[]},\"numOfRows\":100,\"pageNo\":2,\"totalCount\":75},\"header\":{\"resultCode\":\"0\",\"resultMsg\":\"정상\"}}}\n",
+      "url": "https://apis.data.go.kr/1741000/animal_boarding/info?serviceKey=REDACTED&pageNo=2&numOfRows=100&returnType=json&cond%5BSALS_STTS_CD%3A%3AEQ%5D=01&cond%5BOPN_ATMY_GRP_CD%3A%3AEQ%5D=3561000"
+    }
+  ]
+}

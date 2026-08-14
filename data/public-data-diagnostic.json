@@ -1,0 +1,22 @@
+{
+  "ok": false,
+  "apiUrl": "https://apis.data.go.kr/1741000/animal_hospitals",
+  "targetLocalCodes": [
+    "3560000"
+  ],
+  "targetStatusCodes": [
+    "1"
+  ],
+  "fetchedAt": "2026-07-08T11:41:58.485Z",
+  "itemCount": 0,
+  "diagnostics": [
+    {
+      "status": 500,
+      "localCode": "3560000",
+      "pageNo": 1,
+      "contentType": "text/plain; charset=utf-8",
+      "sample": "Unexpected errors\n",
+      "url": "https://apis.data.go.kr/1741000/animal_hospitals?serviceKey=[REDACTED]&pageNo=1&numOfRows=100&type=json&localCode=3560000&opnSfTeamCode=3560000&sidoCode=3560000&trdStateGbn=1"
+    }
+  ]
+}

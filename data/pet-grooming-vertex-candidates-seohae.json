@@ -1,0 +1,1373 @@
+{
+  "generatedAt": "2026-08-04T11:36:43.621Z",
+  "total": 118,
+  "summary": {
+    "A": 27,
+    "B": 8,
+    "ERR": 83
+  },
+  "results": [
+    {
+      "grade": "A",
+      "score": 131,
+      "sourceCount": 13,
+      "blogCount": 15,
+      "cafeCount": 0,
+      "name": "고양이 이발관",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 청라커낼로***번길 **, 청라한신더휴커낼웨이 상가동 ***호 (청라동)",
+      "sourceId": "public-grooming-356100004920210025",
+      "samples": [
+        "인천 고양이 미용 고양이이발관 무마취 후기",
+        "인천 서구 청라 애견미용 추천... 스트레스 없이 예뻐진 솔직후기",
+        "인천서구 청라동 애견미용실 인테리어 쉬폰 커튼으로...",
+        "인천서구 청라동 애견미용실 인테리어 옐로우 콤비 블라인드"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 131,
+      "sourceCount": 13,
+      "blogCount": 14,
+      "cafeCount": 1,
+      "name": "글로리퍼피",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 보석로**번안길 *, 청라주차타워 *동 *층 (청라동)",
+      "sourceId": "public-grooming-356100004920230024",
+      "samples": [
+        "[ 청라 / 인천 ] 글로리퍼피 | 강아지 애견 유치원 & 미용 찐 후기",
+        "인천서구 청라동 애견미용실 인테리어 쉬폰 커튼으로...",
+        "인천서구 청라동 애견미용실 인테리어 옐로우 콤비 블라인드",
+        "인천 서구 청라 애견미용 추천... 스트레스 없이 예뻐진 솔직후기"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 123,
+      "sourceCount": 12,
+      "blogCount": 12,
+      "cafeCount": 0,
+      "name": "하이독",
+      "dong": "가정동",
+      "phone": "032-568-6665",
+      "address": "인천광역시 서해구 염곡로***번안길 **, *층 일부호 (가정동)",
+      "sourceId": "public-grooming-356100004920230028",
+      "samples": [
+        "인천 가정동 루원시티 애견미용 빠몽펫살롱 말티숑 미용 후기",
+        "청라애견미용) 푸들미용 인천서구 가정동 애견미용 하이독으로...",
+        "인천 서구 가정동 가정역 애견미용, 루원시티 애견미용...",
+        "인천 가정동 루원시티 애견미용 잘하는 곳, 믿고 맡기는 단골샵..."
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 113,
+      "sourceCount": 11,
+      "blogCount": 13,
+      "cafeCount": 0,
+      "name": "꽃길 걷는 고양이",
+      "dong": "가정동",
+      "phone": "032-566-4627",
+      "address": "인천광역시 서해구 염곡로***번안길 **-*, ***호 (가정동)",
+      "sourceId": "public-grooming-356100004920180010",
+      "samples": [
+        "인천 가정동 루원시티 애견미용 빠몽펫살롱 말티숑 미용 후기",
+        "인천 서구 가정동 가정역 애견미용, 루원시티 애견미용...",
+        "인천 고양이 미용실 무마취 미용 가정동 꽃길걷는 고양이",
+        "인천 가정동 청라 고양이미용 꽃길걷는고양이"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 111,
+      "sourceCount": 11,
+      "blogCount": 11,
+      "cafeCount": 0,
+      "name": "씨씨캠독",
+      "dong": "가정동",
+      "phone": "",
+      "address": "인천광역시 서해구 가정로 ***, 루원센텀시티 ***호 (가정동)",
+      "sourceId": "public-grooming-356100004920250016",
+      "samples": [
+        "인천 가정동 애견호텔 씨씨캠독 깨끗하고 넓어서 만족해요!",
+        "인천 가정동 루원시티 애견미용 빠몽펫살롱 말티숑 미용 후기",
+        "인천 서구 가정동 가정역 애견미용, 루원시티 애견미용...",
+        "인천 가정동 루원시티 애견미용 잘하는 곳, 믿고 맡기는 단골샵..."
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 103,
+      "sourceCount": 10,
+      "blogCount": 10,
+      "cafeCount": 0,
+      "name": "빠방이네",
+      "dong": "석남동",
+      "phone": "032-577-9879",
+      "address": "인천광역시 서해구 새오개로 **, *층 ***호 (석남동)",
+      "sourceId": "public-grooming-356100004920190009",
+      "samples": [
+        "[인천/서구] 인천애견미용실추천 석남동 “토토펫살롱”...",
+        "빠방이네/말티즈 꼬미/인천서구애견미용실은 청라에서 가깝고...",
+        "석남동 애견미용학원 - 국비지원으로는 애견미용사가 될 수...",
+        "비숑미용잘하는곳을 찾으신다면 인천서구 석남동/신현동..."
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 101,
+      "sourceCount": 10,
+      "blogCount": 14,
+      "cafeCount": 0,
+      "name": "강아지와 고양이",
+      "dong": "가정동",
+      "phone": "",
+      "address": "인천광역시 서해구 염곡로***번안길 *, ***호 (가정동)",
+      "sourceId": "public-grooming-356100004920190037",
+      "samples": [
+        "인천 서구 가정동 가정역 애견미용, 루원시티 애견미용...",
+        "인천 가정동 루원시티 애견미용 빠몽펫살롱 말티숑 미용 후기",
+        "인천 강아지와 고양이, 애견미용으로 귀엽게 변신하는 꿀팁",
+        "수업으로 취창업 연계되는 인천 서구애견미용학원 추천(가정동)"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 101,
+      "sourceCount": 10,
+      "blogCount": 11,
+      "cafeCount": 0,
+      "name": "버블독",
+      "dong": "석남동",
+      "phone": "",
+      "address": "인천광역시 서해구 염곡로 ***, 상일빌딩 ***호 (석남동)",
+      "sourceId": "public-grooming-356100004920250005",
+      "samples": [
+        "석남동애견미용 조용한 1대1 케어 가능한 버블독 강아지미용실",
+        "석남동애견미용 깔끔하게 가능한 버블독 강아지미용실",
+        "석남동애견미용 조용한 전용룸 운영하는 버블독 강아지미용실",
+        "인천서구애견미용 버블독 강아지미용실 진짜 완전 깔끔 미용..."
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 101,
+      "sourceCount": 10,
+      "blogCount": 10,
+      "cafeCount": 0,
+      "name": "몽스파",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 중봉대로 ***, 홈플러스 인천청라점 지하*층 (청라동)",
+      "sourceId": "public-grooming-356100004920200035",
+      "samples": [
+        "인천서구 청라동 애견미용실 인테리어 쉬폰 커튼으로...",
+        "인천서구 청라동 애견미용실 인테리어 옐로우 콤비 블라인드",
+        "인천 서구 청라 애견미용 추천... 스트레스 없이 예뻐진 솔직후기",
+        "청라 애견미용 / 청라 애견스파 몽스파의 놀이방을..."
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 101,
+      "sourceCount": 10,
+      "blogCount": 10,
+      "cafeCount": 0,
+      "name": "브리앙뜨몽",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 청라커낼로***번길 *-**, ***호 (청라동)",
+      "sourceId": "public-grooming-356100004920210024",
+      "samples": [
+        "청라애견미용-인천애견미용-골든두들미용 [브리앙뜨몽]",
+        "청라애견미용-인천애견미용-스탠다드푸들미용 [브리앙뜨몽]",
+        "청라애견미용-인천애견미용-푸들미용 [브리앙뜨몽]",
+        "청라애견미용-인천애견미용-말티푸미용 [브리앙뜨몽]"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 93,
+      "sourceCount": 9,
+      "blogCount": 9,
+      "cafeCount": 0,
+      "name": "오펫",
+      "dong": "검암동",
+      "phone": "032-567-2005",
+      "address": "인천광역시 서해구 승학로 ***, 힘찬프라자 ***호 (검암동)",
+      "sourceId": "public-grooming-356100004920180006",
+      "samples": [
+        "인천 애견미용실 서구 검암동 라움독, 스트레스 없는 첫미용을...",
+        "인천 서구 검암동 애견미용 j애견호텔유치원",
+        "인천 서구 검암동 강아지 미용샵 ‘우디펫’ 첫 방문 후기 ✂️",
+        "검암동 애견미용 잘하는곳 모모네 반려견미용실 토이푸들..."
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 91,
+      "sourceCount": 9,
+      "blogCount": 10,
+      "cafeCount": 0,
+      "name": "명랑쌀롱",
+      "dong": "가좌동",
+      "phone": "",
+      "address": "인천광역시 서해구 장고개로***번안길 *, ***~***호 (가좌동)",
+      "sourceId": "public-grooming-356100004920230002",
+      "samples": [
+        "인천 서구 가좌동 말티푸 애견미용 라라몽 내돈내산 후기",
+        "가좌동 애견미용학원 비교 - 비용·기간·자격증보다 중요한 것은?",
+        "인천 가좌동 세심한 애견미용[라라몽]",
+        "인천 가좌 인천애견유치원 명랑유치원 2회차 등원 솔직후기"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 91,
+      "sourceCount": 9,
+      "blogCount": 10,
+      "cafeCount": 0,
+      "name": "뽀도DOG",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 청라루비로 **, 청라 스퀘어* *층 ***, ***호 (청라동)",
+      "sourceId": "public-grooming-356100004920250006",
+      "samples": [
+        "인천 서구 청라 애견미용 추천... 스트레스 없이 예뻐진 솔직후기",
+        "인천서구 청라동 애견미용실 인테리어 쉬폰 커튼으로...",
+        "인천서구 청라동 애견미용실 인테리어 옐로우 콤비 블라인드",
+        "[인천-청라동]해삐허브 매일가는 애견미용, “아기강아지”"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 81,
+      "sourceCount": 8,
+      "blogCount": 12,
+      "cafeCount": 0,
+      "name": "댕댕살롱",
+      "dong": "석남동",
+      "phone": "",
+      "address": "인천광역시 서해구 서달로***번길 *, 인천상가 ***호 (석남동)",
+      "sourceId": "public-grooming-356100004920260005",
+      "samples": [
+        "서구] 인천애견미용실추천 석남동 “토토펫살롱” 애견미용후기",
+        "[목욕] 석남동 댕댕살롱 애견미용샵 후기",
+        "석남동 애견미용학원 - 국비지원으로는 애견미용사가 될 수...",
+        "청라애견샵 댕댕살롱 애견 미용서비스 받아보세요~!"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 81,
+      "sourceCount": 8,
+      "blogCount": 8,
+      "cafeCount": 0,
+      "name": "그루몽",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 청라한내로 **, 광영 스너그시티 청라 *층 ***호 (청라동)",
+      "sourceId": "public-grooming-356100004920220028",
+      "samples": [
+        "인천서구 청라동 애견미용실 인테리어 쉬폰 커튼으로...",
+        "인천서구 청라동 애견미용실 인테리어 옐로우 콤비 블라인드",
+        "인천 서구 청라 애견미용 추천... 스트레스 없이 예뻐진 솔직후기",
+        "[인천-청라동]해삐허브 매일가는 애견미용, “아기강아지”"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 81,
+      "sourceCount": 8,
+      "blogCount": 11,
+      "cafeCount": 0,
+      "name": "나나그룸",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 청라커낼로***번길 **, 현대썬앤빌더테라스상가 ***동 ***호 (청라동)",
+      "sourceId": "public-grooming-356100004920220026",
+      "samples": [
+        "[인천간판]청라동 나나그룸 간판시공.",
+        "인천서구 청라동 애견미용실 인테리어 쉬폰 커튼으로...",
+        "[나나그룸] 비숑 스포팅미용 모음❤️ | 청라애견미용",
+        "청라 애견미용 멍냥샤워 페피스그룸 애견미용가위연마 후기"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 81,
+      "sourceCount": 8,
+      "blogCount": 8,
+      "cafeCount": 0,
+      "name": "댕신나게",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 청라한내로 **, 하엘에스페이스 *층 ***호 (청라동)",
+      "sourceId": "public-grooming-356100004920240026",
+      "samples": [
+        "청라3동 애견유치원 댕신나게 다녀온 후기",
+        "인천서구 청라동 애견미용실 인테리어 쉬폰 커튼으로...",
+        "인천서구 청라동 애견미용실 인테리어 옐로우 콤비 블라인드",
+        "인천 서구 청라 애견미용 추천... 스트레스 없이 예뻐진 솔직후기"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 81,
+      "sourceCount": 8,
+      "blogCount": 8,
+      "cafeCount": 0,
+      "name": "라랑스",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 청라에메랄드로***번길 *-**, ***호 (청라동)",
+      "sourceId": "public-grooming-356100004920230001",
+      "samples": [
+        "인천서구 청라동 애견미용실 인테리어 쉬폰 커튼으로...",
+        "인천서구 청라동 애견미용실 인테리어 옐로우 콤비 블라인드",
+        "인천 서구 청라 애견미용 추천... 스트레스 없이 예뻐진 솔직후기",
+        "[인천-청라동]해삐허브 매일가는 애견미용, “아기강아지”"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 81,
+      "sourceCount": 8,
+      "blogCount": 8,
+      "cafeCount": 0,
+      "name": "JOO ZOO 이발소",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 청라에메랄드로***번길 **, *층 ***호 (청라동)",
+      "sourceId": "public-grooming-356100004920190008",
+      "samples": [
+        "청라애견미용, 소형견부터... 믿고 맡길 수 있는 JOOZOO이발소",
+        "인천서구 청라동 애견미용실 인테리어 쉬폰 커튼으로...",
+        "인천 서구 청라 애견미용 추천... 스트레스 없이 예뻐진 솔직후기",
+        "인천서구 청라동 애견미용실 인테리어 옐로우 콤비 블라인드"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 73,
+      "sourceCount": 7,
+      "blogCount": 11,
+      "cafeCount": 0,
+      "name": "가정동물병원",
+      "dong": "가정동",
+      "phone": "032-575-0833",
+      "address": "인천광역시 서해구 가정로 *** (가정동)",
+      "sourceId": "public-grooming-356100004920250031",
+      "samples": [
+        "인천 서구 가정동 가정역 애견미용, 루원시티 애견미용...",
+        "인천 가정동 루원시티 애견미용 빠몽펫살롱 말티숑 미용 후기",
+        "인천 가정동 루원시티 애견미용 잘하는 곳, 믿고 맡기는 단골샵...",
+        "우리 강아지의 행복까지 챙겨주는 가정동애견미용 뽀그리독 후기"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 71,
+      "sourceCount": 7,
+      "blogCount": 14,
+      "cafeCount": 0,
+      "name": "화이트베베",
+      "dong": "연희동",
+      "phone": "",
+      "address": "인천광역시 서해구 승학로 ***, *층 (연희동)",
+      "sourceId": "public-grooming-356100004920260018",
+      "samples": [
+        "미용 화이트베베 추천 꼼꼼한 알림장까지 검암 애견미용 후기",
+        "인천 애견미용 강아지 미용잘하는곳 화이트베베 이용후기",
+        "인천 애견미용 추천, 화이트베베 방문 후기",
+        "인천 강아지 미용 '화이트베베' 커트+아로마스파 대만족후기"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 61,
+      "sourceCount": 6,
+      "blogCount": 6,
+      "cafeCount": 0,
+      "name": "비숑이즈",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 중봉대로***번길 **-**, 마르씨엘 B**층 (청라동)",
+      "sourceId": "public-grooming-356100004920180025",
+      "samples": [
+        "{인천, 애견미용실, 추천!) 비숑이즈 인천 애견미용실 비숑이즈...",
+        "인천 서구 청라 애견미용 추천... 스트레스 없이 예뻐진 솔직후기",
+        "청라애견미용/청라비숑미용 비숑이즈 자두 미용데이",
+        "인천 애견미용 애견가위컷전문... 애견오픈미용실~부평 과 청라..."
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 53,
+      "sourceCount": 5,
+      "blogCount": 6,
+      "cafeCount": 0,
+      "name": "쪼꼬동물메디컬센터",
+      "dong": "가정동",
+      "phone": "032-565-2943",
+      "address": "인천광역시 서해구 청중로***번안길 *, *층 (가정동)",
+      "sourceId": "public-grooming-356100004920180052",
+      "samples": [
+        "인천 가정동 루원시티 애견미용 빠몽펫살롱 말티숑 미용 후기",
+        "인천 서구 가정동 가정역 애견미용, 루원시티 애견미용...",
+        "쪼꼬동물병원가정동동물병원... 인천서구동물병원...",
+        "우리 강아지의 행복까지 챙겨주는 가정동애견미용 뽀그리독 후기"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 53,
+      "sourceCount": 5,
+      "blogCount": 5,
+      "cafeCount": 0,
+      "name": "독스(Dogs)",
+      "dong": "청라동",
+      "phone": "032-561-2080",
+      "address": "인천광역시 서해구 청라에메랄드로 ***, 상가동 ***호 (청라동, 중흥에스클래스)",
+      "sourceId": "public-grooming-356100004920250020",
+      "samples": [
+        "인천 서구 청라 애견미용 추천... 스트레스 없이 예뻐진 솔직후기",
+        "인천서구 청라동 애견미용실 인테리어 쉬폰 커튼으로...",
+        "인천서구 청라동 애견미용실 인테리어 옐로우 콤비 블라인드",
+        "인천서구청라동170-10... 48평 1층스퀘어독스청라본점"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 51,
+      "sourceCount": 5,
+      "blogCount": 5,
+      "cafeCount": 0,
+      "name": "몽돌(mongdoll)",
+      "dong": "연희동",
+      "phone": "",
+      "address": "인천광역시 서해구 간촌로 * (연희동)",
+      "sourceId": "public-grooming-356100004920260020",
+      "samples": [
+        "연희동 애견미용학원 비교 - 애견미용사 취업·창업, 어떻게...",
+        "제대로 된 학원선택부터(인천 서구애견미용학원 추천 및 정보)",
+        "청라 애견미용 블랙독 방문 후기",
+        "드라마 수상한 그녀 촬영지 모음 오말순 국밥집은 어디?"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 41,
+      "sourceCount": 4,
+      "blogCount": 4,
+      "cafeCount": 0,
+      "name": "일리그루밍",
+      "dong": "가좌동",
+      "phone": "",
+      "address": "인천광역시 서해구 열우물로***번길 **, 근린생활시설동 B***호 (가좌동, 가재울역트루엘에코시티아파트)",
+      "sourceId": "public-grooming-356100004920240014",
+      "samples": [
+        "옥자네 그루밍살롱 미용 [가좌동 옥자네 애견미용] 부개동으로...",
+        "인천고양이무마취출장미용 귀엽개귀엽냥 후기",
+        "인천 가좌 인천애견유치원 명랑유치원 2회차 등원 솔직후기",
+        "몽그루밍 루원시티애견미용 신현동애견미용 가정동애견미용"
+      ]
+    },
+    {
+      "grade": "A",
+      "score": 41,
+      "sourceCount": 4,
+      "blogCount": 4,
+      "cafeCount": 0,
+      "name": "청라 공감 동물의료센터",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 중봉대로***번길 **, *층 (청라동, 청라 풍림 엑슬루타워)",
+      "sourceId": "public-grooming-356100004920180051",
+      "samples": [
+        "인천 서구 청라동 청라레이... 분해청소로 살려낸 후기",
+        "[인천광역시/동물병원] 24시청라공감동물의료센터 - 서구 청라동",
+        "인천 서구 청라 애견미용 추천... 스트레스 없이 예뻐진 솔직후기",
+        "이니즈 | 청라 감성카페 | 서해구 카페 | 내돈내산 방문후기"
+      ]
+    },
+    {
+      "grade": "B",
+      "score": 31,
+      "sourceCount": 3,
+      "blogCount": 3,
+      "cafeCount": 0,
+      "name": "그루밍시즌",
+      "dong": "검암동",
+      "phone": "",
+      "address": "인천광역시 서해구 승학로 ***, 은혜프라자 *층 (검암동)",
+      "sourceId": "public-grooming-356100004920230011",
+      "samples": [
+        "인천 서구 검암동 애견미용 j애견호텔유치원",
+        "인천 애견미용실 서구 검암동 라움독, 스트레스 없는 첫미용을...",
+        "인천서구애견미용 그루밍시즌"
+      ]
+    },
+    {
+      "grade": "B",
+      "score": 31,
+      "sourceCount": 3,
+      "blogCount": 3,
+      "cafeCount": 0,
+      "name": "하이멍뭉",
+      "dong": "공촌동",
+      "phone": "",
+      "address": "인천광역시 서해구 심곡로 ***, 영우빌딩 ***호 (공촌동)",
+      "sourceId": "public-grooming-356100004920200033",
+      "samples": [
+        "중구 답동 '카페,오숑' , 인천 서구 공촌동 '하이 멍뭉' 시공후기",
+        "휴무일 공지(인천서구애견미용,인천서구청애견미용,공촌동애견...",
+        "하이멍뭉"
+      ]
+    },
+    {
+      "grade": "B",
+      "score": 31,
+      "sourceCount": 3,
+      "blogCount": 4,
+      "cafeCount": 0,
+      "name": "봄날의 댕댕이",
+      "dong": "심곡동",
+      "phone": "",
+      "address": "인천광역시 서해구 심곡로***번길 *, *층 (심곡동)",
+      "sourceId": "public-grooming-356100004920260019",
+      "samples": [
+        "미용하고 더 귀여워진 밤이, 봄날의댕댕이 스파 후기",
+        "꼼꼼한 인천 심곡동 신상 애견미용샵 몽블링펫살롱 찐후기",
+        "인천 서구 심곡동포차 이편한샵 포차에서 스테이크와 파스타"
+      ]
+    },
+    {
+      "grade": "B",
+      "score": 31,
+      "sourceCount": 3,
+      "blogCount": 3,
+      "cafeCount": 0,
+      "name": "웬만해선 개들을 막을 수 없다",
+      "dong": "청라동",
+      "phone": "",
+      "address": "인천광역시 서해구 청라커낼로 ***, 커낼힐스빌 *층 ***호 (청라동)",
+      "sourceId": "public-grooming-356100004920240011",
+      "samples": [
+        "새치염색 잘하는 곳 인천 청라동 미용실 추천 컬러드스파...",
+        "인천 서구 청라 애견미용 추천... 스트레스 없이 예뻐진 솔직후기",
+        "청라애견유치원 #웬만해선 개들을 막을 수 없다"
+      ]
+    },
+    {
+      "grade": "B",
+      "score": 21,
+      "sourceCount": 2,
+      "blogCount": 2,
+      "cafeCount": 0,
+      "name": "인천강아지분양 고양이분양 미유펫 청라검단점",
+      "dong": "경서동",
+      "phone": "",
+      "address": "인천광역시 서해구 이화로 **, 행운빌딩 *층 (경서동)",
+      "sourceId": "public-grooming-356100004920240022",
+      "samples": [
+        "인천 검단애견분양 신현동강아지분양 청라애견미용 도그월드...",
+        "인천 가정동애견분양 경서동강아지분양 연희동애견미용..."
+      ]
+    },
+    {
+      "grade": "B",
+      "score": 13,
+      "sourceCount": 1,
+      "blogCount": 1,
+      "cafeCount": 0,
+      "name": "인천 서구 고양이 강아지 미용 행복한펫살롱",
+      "dong": "심곡동",
+      "phone": "032-565-8338",
+      "address": "인천광역시 서해구 심곡로 **-*, *층 (심곡동)",
+      "sourceId": "public-grooming-356100004920180030",
+      "samples": [
+        "꼼꼼한 인천 심곡동 신상 애견미용샵 몽블링펫살롱 찐후기"
+      ]
+    },
+    {
+      "grade": "B",
+      "score": 11,
+      "sourceCount": 1,
+      "blogCount": 1,
+      "cafeCount": 0,
+      "name": "루원시티독",
+      "dong": "신현동",
+      "phone": "",
+      "address": "인천광역시 서해구 염곡로***번길 **-*, ***호 (신현동)",
+      "sourceId": "public-grooming-356100004920190036",
+      "samples": [
+        "{인천, 애견미용실, 추천!) 루원시티독 루원시티독, 맞춤 케어로..."
+      ]
+    },
+    {
+      "grade": "B",
+      "score": 11,
+      "sourceCount": 1,
+      "blogCount": 2,
+      "cafeCount": 0,
+      "name": "몽블링펫살롱",
+      "dong": "심곡동",
+      "phone": "",
+      "address": "인천광역시 서해구 심곡로 ***, 대동상가 ***호 (심곡동)",
+      "sourceId": "public-grooming-356100004920230012",
+      "samples": [
+        "꼼꼼한 인천 심곡동 신상 애견미용샵 몽블링펫살롱 찐후기"
+      ]
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "개꿈",
+      "dong": "가정동",
+      "sourceId": "public-grooming-356100004920230017",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "고운손길",
+      "dong": "가정동",
+      "sourceId": "public-grooming-356100004920230023",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "마롱 살롱",
+      "dong": "가정동",
+      "sourceId": "public-grooming-356100004920250003",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "멍뭉실",
+      "dong": "가정동",
+      "sourceId": "public-grooming-356100004920260011",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "버블독스 가정루원시티점",
+      "dong": "가정동",
+      "sourceId": "public-grooming-356100004920250015",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "빠몽(PAWMONG)",
+      "dong": "가정동",
+      "sourceId": "public-grooming-356100004920250007",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "예뿌댕",
+      "dong": "가정동",
+      "sourceId": "public-grooming-356100004920230010",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "이쁘개 해봄",
+      "dong": "가정동",
+      "sourceId": "public-grooming-356100004920240003",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "잘어울리개",
+      "dong": "가정동",
+      "sourceId": "public-grooming-356100004920240029",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "귀엽개귀엽냥",
+      "dong": "가좌동",
+      "sourceId": "public-grooming-356100004920200005",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "댕댕미작",
+      "dong": "가좌동",
+      "sourceId": "public-grooming-356100004920240020",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "라라몽",
+      "dong": "가좌동",
+      "sourceId": "public-grooming-356100004920230007",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "러블리하개",
+      "dong": "가좌동",
+      "sourceId": "public-grooming-356100004920230005",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "수애견",
+      "dong": "가좌동",
+      "sourceId": "public-grooming-356100004920180067",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "애견의 집",
+      "dong": "가좌동",
+      "sourceId": "public-grooming-356100004920240021",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "예뻐지개",
+      "dong": "가좌동",
+      "sourceId": "public-grooming-356100004920210034",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "예스펫살롱",
+      "dong": "가좌동",
+      "sourceId": "public-grooming-356100004920190034",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "하츄멍(HaChooMung)",
+      "dong": "가좌동",
+      "sourceId": "public-grooming-356100004920250027",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "헤르젠PH컷",
+      "dong": "가좌동",
+      "sourceId": "public-grooming-356100004920180061",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "도그-in 하우스",
+      "dong": "검암동",
+      "sourceId": "public-grooming-356100004920230013",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "라움독",
+      "dong": "검암동",
+      "sourceId": "public-grooming-356100004920230022",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "모모네",
+      "dong": "검암동",
+      "sourceId": "public-grooming-356100004920260006",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "서리네펫살롱",
+      "dong": "검암동",
+      "sourceId": "public-grooming-356100004920190017",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "쇼미더펫",
+      "dong": "검암동",
+      "sourceId": "public-grooming-356100004920250004",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "우디펫",
+      "dong": "검암동",
+      "sourceId": "public-grooming-356100004920250021",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "해피뚜데이",
+      "dong": "검암동",
+      "sourceId": "public-grooming-356100004920250014",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "멍뭉펫살롱",
+      "dong": "경서동",
+      "sourceId": "public-grooming-356100004920240010",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "뽀그리독",
+      "dong": "경서동",
+      "sourceId": "public-grooming-356100004920240027",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "뿌잉뿌잉 애견미용샵",
+      "dong": "경서동",
+      "sourceId": "public-grooming-356100004920190014",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "개인의 공간, 쉼",
+      "dong": "석남동",
+      "sourceId": "public-grooming-356100004920210012",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "개편한 애견미용",
+      "dong": "석남동",
+      "sourceId": "public-grooming-356100004920180024",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "까망 곰 젤리",
+      "dong": "석남동",
+      "sourceId": "public-grooming-356100004920180046",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "무지개",
+      "dong": "석남동",
+      "sourceId": "public-grooming-356100004920220038",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "정들개",
+      "dong": "석남동",
+      "sourceId": "public-grooming-356100004920210038",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "토토펫살롱",
+      "dong": "석남동",
+      "sourceId": "public-grooming-356100004920230008",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "펫싸롱",
+      "dong": "석남동",
+      "sourceId": "public-grooming-356100004920220036",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "길동물병원",
+      "dong": "신현동",
+      "sourceId": "public-grooming-356100004920250029",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "깔끔하개",
+      "dong": "신현동",
+      "sourceId": "public-grooming-356100004920240015",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "꿈꾸는개",
+      "dong": "신현동",
+      "sourceId": "public-grooming-356100004920230015",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "몽그루밍",
+      "dong": "신현동",
+      "sourceId": "public-grooming-356100004920210014",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "행복만개 애견미용 애견호텔 인천본점",
+      "dong": "신현동",
+      "sourceId": "public-grooming-356100004920240018",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "나비빵",
+      "dong": "심곡동",
+      "sourceId": "public-grooming-356100004920180073",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "돌봐줄개",
+      "dong": "심곡동",
+      "sourceId": "public-grooming-356100004920210001",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "언니네",
+      "dong": "심곡동",
+      "sourceId": "public-grooming-356100004920210007",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "푸들리",
+      "dong": "심곡동",
+      "sourceId": "public-grooming-356100004920180011",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "도그맘",
+      "dong": "연희동",
+      "sourceId": "public-grooming-356100004920180041",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "루키네",
+      "dong": "연희동",
+      "sourceId": "public-grooming-356100004920210028",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "올리스 아시아드점",
+      "dong": "연희동",
+      "sourceId": "public-grooming-356100004920220016",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "우리동물병원",
+      "dong": "연희동",
+      "sourceId": "public-grooming-356100004920180034",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "재롱이네",
+      "dong": "연희동",
+      "sourceId": "public-grooming-356100004920220033",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "Beauty in Dog's",
+      "dong": "연희동",
+      "sourceId": "public-grooming-356100004920190012",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "개르메스",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920210021",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "개목간",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920240017",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "개설렘",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920240030",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "개신사",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920230006",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "그루멍 프렌즈",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920200006",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "그루밍125",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920190003",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "그루비그루밍(Groovy Grooming)",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920240004",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "까미랑 몽이",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920230004",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "내사랑댕댕이",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920240028",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "냥냥뷰티살롱 깎냥",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920240001",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "댕댕살롱",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920190033",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "도그루아",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920250010",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "동물에반하다동물병원",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920180020",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "멍냥샤워",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920210006",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "멍즈니스로166",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920260010",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "반려동물미용실 포송",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920180004",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "살롱드주",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920250022",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "순수하개",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920250011",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "아기강아지",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920200021",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "아토,사랑스러워",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920190005",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "안녕, 멍멍",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920220043",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "알로하 강아지유치원 호텔",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920220034",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "오늘도 힘차개",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920240002",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "완픽(wanpick)",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920260016",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "은별이네",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920180035",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "쥬씨왈왈",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920250023",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "청라라임동물의료센터",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920210030",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "청라루비동물병원",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920180049",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "커뮤니캣 고양이 호텔&미용실",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920220030",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "프롬말랑",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920200016",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "Just Grooming",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920180017",
+      "error": "cafearticle 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    },
+    {
+      "grade": "ERR",
+      "score": -1,
+      "sourceCount": 0,
+      "name": "The 펫살롱",
+      "dong": "청라동",
+      "sourceId": "public-grooming-356100004920200004",
+      "error": "blog 429: {\"errorMessage\":\"Rate limit exceeded. (속도 제한을 초과했습니다.)\",\"errorCode\":\"012\"}"
+    }
+  ]
+}

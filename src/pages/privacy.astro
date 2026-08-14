@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/siteConfig';
+
+const title = `개인정보처리방침 | ${siteConfig.siteName}`;
+const description = `${siteConfig.siteName}의 개인정보 처리 기준과 문의 정보 이용 방침을 안내합니다.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="info-page">
+    <div class="info-hero">
+      <span>개인정보처리방침</span>
+      <h1>개인정보처리방침</h1>
+      <p>
+        {siteConfig.siteName}은 회원가입을 받지 않으며, 방문자로부터 개인정보를 직접 수집하는 기능을
+        원칙적으로 운영하지 않습니다.
+      </p>
+    </div>
+
+    <div class="info-stack">
+      <article class="info-card">
+        <h2>개인정보 수집 여부</h2>
+        <p>
+          본 사이트는 회원가입, 댓글, 게시판 기능을 제공하지 않습니다. 따라서 사이트 이용 과정에서
+          이름, 전화번호, 주소 같은 개인정보를 직접 입력받지 않습니다.
+        </p>
+        <p>
+          다만 이메일로 문의를 보내는 경우, 답변과 정정 처리를 위해 이메일 주소와 문의 내용이 확인될
+          수 있습니다.
+        </p>
+      </article>
+
+      <article class="info-card">
+        <h2>광고 및 접속 통계</h2>
+        <p>
+          사이트 운영 과정에서 Google AdSense 광고가 표시될 수 있으며, 네이버 애널리틱스 또는 접속
+          통계 도구가 사용될 수 있습니다. 이 과정에서 쿠키, 접속 기록, 광고 식별 정보 등 개인을 직접
+          식별하지 않는 비식별 정보가 처리될 수 있습니다.
+        </p>
+      </article>
+
+      <article class="info-card">
+        <h2>문의 정보 이용 목적</h2>
+        <p>
+          이메일 문의로 확인되는 정보는 답변, 정보 정정, 삭제 요청 처리 목적으로만 사용합니다. 문의
+          처리에 필요하지 않은 정보는 별도로 요구하지 않습니다.
+        </p>
+      </article>
+
+      <article class="info-card">
+        <h2>삭제 요청 및 문의</h2>
+        <p>
+          이메일 문의 내용의 삭제를 원하시는 경우 아래 이메일로 요청하실 수 있습니다.
+        </p>
+        <p><strong>개인정보 문의 이메일:</strong> <a href="mailto:storyuman@gmail.com">storyuman@gmail.com</a></p>
+        <p class="effective-date">시행일: 2026년 7월 24일</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

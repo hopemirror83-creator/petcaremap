@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="펫케어맵 아이콘">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0b63f6"/>
+      <stop offset="0.58" stop-color="#126cff"/>
+      <stop offset="1" stop-color="#18b7ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#07306f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
+  <path
+    filter="url(#shadow)"
+    fill="#ffffff"
+    d="M32 11c-10.2 0-18.5 7.8-18.5 17.6 0 12.1 14.4 22.4 17.5 24.4.6.4 1.4.4 2 0 3.1-2 17.5-12.3 17.5-24.4C50.5 18.8 42.2 11 32 11Z"
+  />
+  <circle cx="32" cy="28" r="10.8" fill="#0b63f6"/>
+  <circle cx="32" cy="31.7" r="4.3" fill="#ffffff"/>
+  <circle cx="26.1" cy="27.3" r="2.7" fill="#ffffff"/>
+  <circle cx="32" cy="24.6" r="2.7" fill="#ffffff"/>
+  <circle cx="37.9" cy="27.3" r="2.7" fill="#ffffff"/>
+  <path d="M45.7 14.2c2.8 1.7 4.6 3.7 5.8 6.1" fill="none" stroke="#95e8ff" stroke-width="3.3" stroke-linecap="round"/>
+</svg>

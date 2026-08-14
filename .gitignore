@@ -1,0 +1,13 @@
+node_modules/
+.astro/
+dist/
+.wrangler/
+.env
+.env.local
+*.log
+dev-server.*.log
+src/data/siteData.ts
+src/data/petServiceData.ts
+data/raw-*.csv
+data/d1-public-businesses.sql
+data/d1-enrichment.sql

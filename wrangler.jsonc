@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "petcaremap",
+  "compatibility_date": "2026-07-08",
+  "pages_build_output_dir": "dist",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "petcaremap-db",
+      "database_id": "60d2a7b1-9bc8-48d5-a1ff-d20b8542b71f",
+      "migrations_dir": "./migrations"
+    }
+  ],
+  "vars": {
+    "PUBLIC_SITE_NAME": "펫케어맵",
+    "PUBLIC_SITE_URL": "https://petcaremap.product-pack.com",
+    "PUBLIC_DEV_URL": "https://petcaremap.hopemirror83.workers.dev",
+    "INITIAL_REGION": "인천 서구",
+    "INITIAL_BUSINESS_TYPE": "동물병원"
+  }
+}

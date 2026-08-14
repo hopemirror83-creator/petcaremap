@@ -1,0 +1,32 @@
+[
+  {
+    "sourceId": "366000001019960001",
+    "name": "월평동물병원",
+    "message": "Vertex Gemini failed 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+    "failedAt": "2026-07-29T08:35:18.267Z"
+  },
+  {
+    "sourceId": "368000001019960001",
+    "name": "이승재동물병원",
+    "message": "Vertex Gemini failed 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+    "failedAt": "2026-07-29T10:09:17.588Z"
+  },
+  {
+    "sourceId": "368000001020040003",
+    "name": "스마일동물병원",
+    "message": "Vertex Gemini failed 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+    "failedAt": "2026-07-29T10:26:09.479Z"
+  },
+  {
+    "sourceId": "368000001020130001",
+    "name": "디위드동물병원",
+    "message": "Vertex Gemini failed 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+    "failedAt": "2026-07-29T10:32:24.583Z"
+  },
+  {
+    "sourceId": "368000001020150001",
+    "name": "피그케어 동물병원",
+    "message": "Vertex Gemini failed 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n",
+    "failedAt": "2026-07-29T10:46:16.531Z"
+  }
+]

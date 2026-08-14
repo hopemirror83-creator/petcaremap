@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AdSlot from '../components/AdSlot.astro';
+import InArticleAd from '../components/InArticleAd.astro';
+import { areaGroups, businesses, longtailGroups, typeGroups } from '../data/siteData';
+import { siteConfig } from '../data/siteConfig';
+
+const totalCount = businesses.length;
+const title = `펫케어맵 - 동물병원 후기와 방문 전 확인사항`;
+const description = `인천 전체와 서울 주요 5개 구 동물병원 ${totalCount.toLocaleString('ko-KR')}곳을 공공데이터, 네이버 장소 정보, 후기 모음, AI 요약 기준으로 정리했습니다.`;
+const searchItems = [
+  ...areaGroups.map((group: any) => ({ type: '지역', title: group.title, subtitle: `${group.items.length}곳`, href: `/area/${group.slug}/`, keywords: `${group.name} ${group.description}` })),
+  ...typeGroups.map((group: any) => ({ type: '진료유형', title: group.title, subtitle: `${group.items.length}곳`, href: `/type/${group.slug}/`, keywords: `${group.name} ${group.description}` })),
+  ...longtailGroups.map((group: any) => ({ type: '롱테일', title: group.title, subtitle: `${group.items.length}곳`, href: `/topic/${group.slug}/`, keywords: `${group.name} ${group.description}` })),
+  ...businesses.map((item: any) => ({ type: '동물병원', title: item.name, subtitle: item.roadAddress, href: `/${item.typePath}/${item.slug}/`, keywords: `${item.name} ${item.areaLabel} ${(item.services || []).join(' ')}` }))
+];
+const preferredTypeSlugs = ['24h-clinic', 'night-clinic', 'emergency-clinic', 'exotic-clinic', 'cat-clinic', 'dog-clinic', 'parking-clinic'];
+const featuredTypeGroups = preferredTypeSlugs
+  .map((slug) => typeGroups.find((group: any) => group.slug === slug))
+  .filter(Boolean);
+const featuredTopicSlugs = [
+  'incheon-24h-animal-hospital',
+  'incheon-night-animal-hospital',
+  'incheon-emergency-animal-hospital',
+  'incheon-exotic-animal-hospital',
+  'incheon-cat-animal-hospital',
+  'incheon-dog-animal-hospital',
+  'incheon-parking-animal-hospital'
+];
+const featuredTopicGroups = featuredTopicSlugs
+  .map((slug) => longtailGroups.find((group: any) => group.slug === slug))
+  .filter(Boolean);
+const cityGroups = areaGroups
+  .filter((group: any) => group.type === 'city')
+  .sort((a: any, b: any) => b.items.length - a.items.length || a.name.localeCompare(b.name, 'ko'));
+const districtGroups = areaGroups
+  .filter((group: any) => group.type === 'district')
+  .sort((a: any, b: any) => b.items.length - a.items.length || a.name.localeCompare(b.name, 'ko'));
+const dongGroups = areaGroups
+  .filter((group: any) => group.type === 'dong')
+  .sort((a: any, b: any) => b.items.length - a.items.length || a.name.localeCompare(b.name, 'ko'))
+  .slice(0, 36);
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteConfig.siteName,
+  url: Astro.site,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${Astro.site}search?q={search_term_string}`,
+    'query-input': 'required name=search_term_string'
+  }
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema}>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">PetCareMap 지역 확장</p>
+      <h1>동물병원 정보를 지역과 후기 기준으로 정리합니다</h1>
+      <p>{description} 지역별 묶음, 진료유형, 후기 링크, 지도 위치를 함께 확인할 수 있습니다.</p>
+    </div>
+
+    <form class="search-panel" role="search" aria-label="사이트 검색">
+      <label for="site-search">병원명, 지역, 진료 키워드 검색</label>
+      <div class="search-box">
+        <input id="site-search" type="search" autocomplete="off" placeholder="예: 강남구 24시, 송파구 응급, 마포구 고양이" />
+        <button type="submit">검색</button>
+      </div>
+      <div id="search-results" class="search-results" aria-live="polite"></div>
+    </form>
+
+    <div class="popular-strip" aria-label="핵심 페이지 바로가기">
+      {featuredTypeGroups.map((group: any) => <a href={`/type/${group.slug}/`}>{group.name}</a>)}
+      {featuredTopicGroups.slice(0, 4).map((group: any) => <a href={`/topic/${group.slug}/`}>{group.name}</a>)}
+    </div>
+  </section>
+
+  <AdSlot position="top" />
+
+  <section class="decision-section section-tint">
+    <div class="section-heading">
+      <span>진료유형</span>
+      <h2>후기 기반 유형 페이지</h2>
+      <p>24시, 야간진료, 응급, 특수동물처럼 보호자가 먼저 찾는 상황별 페이지로 연결합니다.</p>
+    </div>
+    <div class="topic-grid">
+      {featuredTypeGroups.map((group: any) => (
+        <a class="topic-card" href={`/type/${group.slug}/`}>
+          <strong>{group.name}</strong>
+          <span>{group.items.length.toLocaleString('ko-KR')}곳</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <InArticleAd />
+
+  <section class="decision-section">
+    <div class="section-heading">
+      <span>핵심 키워드</span>
+      <h2>지역 + 상황별 묶음 페이지</h2>
+      <p>24시 동물병원, 야간진료, 특수동물, 고양이 진료처럼 검색 의도에 가까운 페이지를 먼저 보여줍니다.</p>
+    </div>
+    <div class="topic-grid">
+      {featuredTopicGroups.map((group: any) => (
+        <a class="topic-card" href={`/topic/${group.slug}/`}>
+          <strong>{group.name}</strong>
+          <span>{group.items.length.toLocaleString('ko-KR')}곳</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="decision-section section-tint">
+    <div class="section-heading">
+      <span>지역별 보기</span>
+      <h2>지역에서 구·동 단위로 좁혀보기</h2>
+      <p>병원명 전체 나열 대신 지역 단위로 들어가 필요한 병원을 확인할 수 있게 정리했습니다.</p>
+    </div>
+    <div class="region-browser">
+      {cityGroups.map((group: any) => (
+        <a class="region-card region-card-main" href={`/area/${group.slug}/`}>
+          <span>시·도</span>
+          <strong>{group.name}</strong>
+          <em>{group.items.length.toLocaleString('ko-KR')}곳</em>
+        </a>
+      ))}
+      <div class="region-card-group">
+        {districtGroups.map((group: any) => (
+          <a class="region-card" href={`/area/${group.slug}/`}>
+            <span>구·군</span>
+            <strong>{group.name}</strong>
+            <em>{group.items.length.toLocaleString('ko-KR')}곳</em>
+          </a>
+        ))}
+      </div>
+      <div class="region-chip-list" aria-label="동별 보기">
+        {dongGroups.map((group: any) => (
+          <a href={`/area/${group.slug}/`}>{group.name}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <AdSlot position="bottom" />
+
+  <script define:vars={{ searchItems }} is:inline>
+    const input = document.querySelector('#site-search');
+    const form = document.querySelector('.search-panel');
+    const results = document.querySelector('#search-results');
+    const items = searchItems;
+
+    function renderResults(query) {
+      const normalized = query.trim().toLowerCase();
+      if (!normalized) {
+        results.classList.remove('is-open');
+        results.innerHTML = '';
+        return;
+      }
+      const matches = items
+        .filter((item) => `${item.title} ${item.subtitle} ${item.keywords}`.toLowerCase().includes(normalized))
+        .slice(0, 8);
+      results.innerHTML = matches.length
+        ? matches.map((item) => `<a href="${item.href}"><span>${item.type}</span><strong>${item.title}</strong><small>${item.subtitle}</small></a>`).join('')
+        : '<p class="empty-search">검색 결과가 없습니다. 병원명이나 지역명을 바꿔보세요.</p>';
+      results.classList.add('is-open');
+    }
+
+    input?.addEventListener('input', (event) => renderResults(event.target.value));
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const firstResult = results.querySelector('a');
+      if (firstResult) window.location.href = firstResult.href;
+    });
+  </script>
+</BaseLayout>

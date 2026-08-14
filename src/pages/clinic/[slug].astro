@@ -1,0 +1,365 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SimpleMap from '../../components/SimpleMap.astro';
+import BusinessCard from '../../components/BusinessCard.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import InArticleAd from '../../components/InArticleAd.astro';
+import { businesses } from '../../data/siteData';
+
+export function getStaticPaths() {
+  return businesses
+    .filter((item: any) => item.businessType === 'clinic')
+    .map((item: any) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+const { item } = Astro.props;
+const related = businesses
+  .filter((candidate: any) => candidate.slug !== item.slug)
+  .sort((a: any, b: any) => Number(b.district === item.district) - Number(a.district === item.district))
+  .slice(0, 4);
+
+const title = item.title;
+const description = item.metaDescription;
+const detailUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const articleSections = (item.articleSections?.length
+  ? item.articleSections
+  : [
+      {
+        heading: '방문 전 진료정보 정리',
+        body: [item.serviceSection, item.checkSection, item.reviewSection].filter(Boolean).join('\n\n')
+      }
+    ]).filter((section: any) => section.heading && section.body);
+let articleParagraphCount = 0;
+let articleAdInserted = false;
+const renderedArticleSections = articleSections.map((section: any) => ({
+  heading: section.heading,
+  paragraphs: String(section.body).split(/\n+/).filter(Boolean)
+})).map((section: any) => {
+  articleParagraphCount += section.paragraphs.length;
+  const insertAdAfter = !articleAdInserted && articleParagraphCount >= 2;
+  if (insertAdAfter) articleAdInserted = true;
+  return { ...section, insertAdAfter };
+});
+
+const reviewSourceSummary = item.reviewSourceSummary;
+const reviewAnalysisCards = item.reviewAnalysisCards || [];
+const featureCards = item.featureCards || [];
+const decisionGuide = item.decisionGuide || { goodFor: [], checkBefore: [] };
+const searchIntentCards = item.searchIntentCards || [];
+const intentLinks = item.intentLinks || [];
+const reviewLinks = item.reviewLinks || [];
+const reviewBadge = item.naverMapReviewCount
+  ? `지도 리뷰 ${Number(item.naverMapReviewCount).toLocaleString('ko-KR')}`
+  : item.reviewCoverageLabel || '공개 후기 부족';
+
+const comparisonRows = [item, ...related].slice(0, 4).map((business: any) => ({
+  name: business.name,
+  href: business.slug === item.slug ? null : `/${business.typePath}/${business.slug}/`,
+  review: business.naverMapReviewCount
+    ? `지도 ${Number(business.naverMapReviewCount).toLocaleString('ko-KR')}`
+    : business.reviewCoverageLabel || '공개 후기 부족',
+  overnight: business.services?.includes('24시') ? '가능성' : '확인 필요',
+  parking: business.services?.includes('주차') ? '가능성' : business.naverMapReviewCount ? '지도 확인' : '확인 필요',
+  exotic: business.services?.includes('특수동물') ? '언급 있음' : '확인 필요'
+}));
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['LocalBusiness', 'VeterinaryCare'],
+      name: item.name,
+      url: detailUrl,
+      telephone: item.phone,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: item.roadAddress || item.lotAddress,
+        addressLocality: `${item.city || ''} ${item.district || ''}`.trim(),
+        addressRegion: item.city,
+        addressCountry: 'KR'
+      },
+      geo: item.lat && item.lng ? { '@type': 'GeoCoordinates', latitude: item.lat, longitude: item.lng } : undefined,
+      sameAs: item.naverMapUrl
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '펫케어맵', item: new URL('/', Astro.site).toString() },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: `${item.city} ${item.district} 동물병원`,
+          item: new URL(`/area/${item.city}-${item.district}-동물병원/`, Astro.site).toString()
+        },
+        { '@type': 'ListItem', position: 3, name: item.name, item: detailUrl }
+      ]
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: (item.faqItems || []).map((faq: any) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+      }))
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema}>
+  <section class="detail-shell">
+    <div class="detail-hero-card">
+      <p class="eyebrow">동물병원 상세</p>
+      <h1>{item.title}</h1>
+      <p>{item.metaDescription}</p>
+      <div class="hero-action-row">
+        <a class="primary-link" href={item.naverMapUrl} target="_blank" rel="noopener">네이버 지도 바로가기</a>
+        <span class="status-pill">{reviewBadge}</span>
+      </div>
+      <div class="hero-meta-grid">
+        <div><span>지역</span><strong>{item.areaLabel}</strong></div>
+        <div><span>카테고리</span><strong>{item.category || '동물병원'}</strong></div>
+        <div><span>주소</span><strong>{item.roadAddress || item.lotAddress || '확인 필요'}</strong></div>
+        <div><span>전화</span><strong>{item.phone || '확인 필요'}</strong></div>
+        <div><span>운영시간</span><strong>{item.openingHours || '방문 전 확인 필요'}</strong></div>
+        <div><span>영업상태</span><strong>{item.operationStatus || '확인 필요'}</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <AdSlot position="top" />
+
+  <section class="decision-section">
+    <div class="review-summary-card">
+      <span>후기 모음</span>
+      <h2>후기 요약</h2>
+      <p>{item.aiReviewSummary?.oneLineSummary || '현재 확인 가능한 공개 후기 자료를 기준으로 정리했습니다.'}</p>
+      {item.aiReviewSummary?.confidenceNote && <small>{item.aiReviewSummary.confidenceNote}</small>}
+    </div>
+  </section>
+
+  <section class="decision-section prose-section review-first-prose">
+    <article>
+      {renderedArticleSections.map((section: any) => (
+        <>
+          <section class="article-block">
+            <h2>{section.heading}</h2>
+            {section.paragraphs.map((paragraph: string) => <p>{paragraph}</p>)}
+          </section>
+          {section.insertAdAfter && <InArticleAd />}
+        </>
+      ))}
+      {!articleAdInserted && <InArticleAd />}
+    </article>
+  </section>
+
+  {item.naverMapReviewCount > 0 && (
+    <section class="decision-section map-review-note">
+      <div>
+        <span>네이버 지도</span>
+        <h2>지도 리뷰 {Number(item.naverMapReviewCount).toLocaleString('ko-KR')}개 표시</h2>
+        <p>블로그나 카페 후기가 부족한 병원도 네이버 지도에는 보호자 리뷰가 별도로 쌓여 있을 수 있습니다. 지도 리뷰는 원문을 가져오지 않고, 네이버 지도에서 직접 확인할 수 있게 연결합니다.</p>
+      </div>
+      <a class="primary-link" href={item.naverMapUrl} target="_blank" rel="noopener">네이버 지도 리뷰 보기</a>
+    </section>
+  )}
+
+  {reviewSourceSummary && (
+    <section class="decision-section review-source-panel">
+      <div class="section-heading">
+        <span>공개 후기 분석</span>
+        <h2>후기 출처와 분석 범위</h2>
+        <p>{reviewSourceSummary.coverageLabel} · {reviewSourceSummary.label}</p>
+      </div>
+      <div class="source-stat-grid">
+        <div>
+          <span>네이버 지도</span>
+          <strong>{reviewSourceSummary.naverMapReviewCount ? `${Number(reviewSourceSummary.naverMapReviewCount).toLocaleString('ko-KR')}개` : '개별 확인 필요'}</strong>
+        </div>
+        <div>
+          <span>블로그</span>
+          <strong>{reviewSourceSummary.blogCount}건</strong>
+        </div>
+        <div>
+          <span>카페</span>
+          <strong>{reviewSourceSummary.cafeCount}건</strong>
+        </div>
+        <div>
+          <span>참고 링크</span>
+          <strong>{reviewSourceSummary.analyzedTextCount}건</strong>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {reviewAnalysisCards.length > 0 && (
+    <section class="decision-section section-tint">
+      <div class="section-heading">
+        <span>AI 후기 분석</span>
+        <h2>공개 후기 분석 결과</h2>
+      </div>
+      <div class="analysis-grid">
+        {reviewAnalysisCards.map((card: any) => (
+          <div class:list={['analysis-card', !card.score && 'is-muted']}>
+            <strong><span class="analysis-icon">{card.icon}</span>{card.label}</strong>
+            <span class="analysis-stars">{card.evidenceLabel || '정보 부족'}</span>
+            <p>{card.note}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {featureCards.length > 0 && (
+    <section class="decision-section">
+      <div class="section-heading">
+        <span>병원 특징</span>
+        <h2>방문 전 빠르게 보는 체크포인트</h2>
+      </div>
+      <div class="feature-grid">
+        {featureCards.map((feature: any) => (
+          <div class={`feature-card tone-${feature.tone}`}>
+            <span>{feature.label}</span>
+            <strong class="feature-symbol">{feature.symbol}</strong>
+            <em>{feature.status}</em>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {(decisionGuide.goodFor?.length > 0 || decisionGuide.checkBefore?.length > 0) && (
+    <section class="decision-section decision-guide-grid">
+      <div class="decision-column">
+        <span>선택 기준</span>
+        <h2>이 병원이 잘 맞는 경우</h2>
+        <ul>
+          {(decisionGuide.goodFor || []).map((text: string) => <li>{text}</li>)}
+        </ul>
+      </div>
+      <div class="decision-column">
+        <span>방문 전 확인</span>
+        <h2>먼저 따져볼 항목</h2>
+        <ul>
+          {(decisionGuide.checkBefore || []).map((text: string) => <li>{text}</li>)}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  {searchIntentCards.length > 0 && (
+    <section class="decision-section search-intent-panel">
+      <div class="section-heading">
+        <span>검색 상황</span>
+        <h2>이런 경우 많이 찾습니다</h2>
+        <p>병원명보다 보호자가 실제로 검색하는 증상과 상황을 기준으로 정리했습니다.</p>
+      </div>
+      <div class="search-intent-grid">
+        {searchIntentCards.map((intent: any) => (
+          <div class="search-intent-card">
+            <strong><span>{intent.icon}</span>{intent.label}</strong>
+            <p>{intent.note}</p>
+          </div>
+        ))}
+      </div>
+      <p class="section-footnote">실제 진료 가능 여부와 당일 접수 가능 여부는 병원에 직접 확인하세요.</p>
+    </section>
+  )}
+
+  {intentLinks.length > 0 && (
+    <section class="decision-section intent-link-section">
+      <div class="section-heading">
+        <span>내부 링크</span>
+        <h2>관련 검색 링크</h2>
+      </div>
+      <div class="intent-link-grid">
+        {intentLinks.map((link: any) => <a href={link.href}>{link.label}</a>)}
+      </div>
+    </section>
+  )}
+
+  <section class="decision-section">
+    <div class="section-heading">
+      <span>위치</span>
+      <h2>지도와 주소</h2>
+    </div>
+    <SimpleMap item={item} />
+  </section>
+
+  <section class="decision-section section-tint">
+    <div class="section-heading">
+      <span>주변 대안</span>
+      <h2>비슷한 병원 비교</h2>
+      <p>후기 자료와 서비스 단서를 기준으로 근처 병원을 빠르게 비교합니다.</p>
+    </div>
+    <div class="comparison-table-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>병원</th>
+            <th>후기</th>
+            <th>24시</th>
+            <th>주차</th>
+            <th>특수동물</th>
+          </tr>
+        </thead>
+        <tbody>
+          {comparisonRows.map((row: any) => (
+            <tr>
+              <td>
+                {row.href ? <a href={row.href}>{row.name}</a> : <strong>{row.name}</strong>}
+              </td>
+              <td>{row.review}</td>
+              <td>{row.overnight}</td>
+              <td>{row.parking}</td>
+              <td>{row.exotic}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="section-heading comparison-card-heading">
+      <span>주변 대안</span>
+      <h2>같이 비교할 동물병원</h2>
+    </div>
+    <div class="business-grid">
+      {related.map((business: any) => <BusinessCard item={business} />)}
+    </div>
+  </section>
+
+  <section class="decision-section">
+    <div class="section-heading">
+      <span>FAQ</span>
+      <h2>보호자가 자주 확인하는 내용</h2>
+    </div>
+    <div class="faq-grid">
+      {(item.faqItems || []).map((faq: any) => (
+        <details>
+          <summary>{faq.question}</summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  {reviewLinks.length > 0 && (
+    <section class="decision-section review-link-section">
+      <div class="section-heading">
+        <span>참고 링크</span>
+        <h2>네이버 블로그·카페 후기</h2>
+      </div>
+      <ul class="review-link-list">
+        {reviewLinks.map((link: any) => (
+          <li>
+            <a href={link.url} target="_blank" rel="noopener sponsored">
+              <strong>{link.title}</strong>
+              <span>{link.sourceType === 'blog' ? '네이버 블로그' : '네이버 카페'} · {link.sourceName}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <AdSlot position="bottom" />
+</BaseLayout>

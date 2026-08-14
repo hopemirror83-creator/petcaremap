@@ -1,0 +1,19 @@
+---
+const { item } = Astro.props;
+const href = `/${item.typePath}/${item.slug}/`;
+const reviewLabel = item.naverMapReviewCount
+  ? `지도 리뷰 ${Number(item.naverMapReviewCount).toLocaleString('ko-KR')}`
+  : item.reviewCoverageLabel || '공개 후기 부족';
+---
+
+<a class="business-card" href={href}>
+  <div class="card-topline">
+    <strong>{item.name}</strong>
+    <span class="review-stars" aria-label={reviewLabel}>{reviewLabel}</span>
+  </div>
+  <span>{item.areaLabel} · {item.category}</span>
+  <p>{item.displayAddress || item.roadAddress || '주소 확인 필요'}</p>
+  <div class="tag-row">
+    {(item.services || []).slice(0, 5).map((service: string) => <span>{service}</span>)}
+  </div>
+</a>

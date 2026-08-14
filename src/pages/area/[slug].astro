@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BusinessCard from '../../components/BusinessCard.astro';
+import SimpleMap from '../../components/SimpleMap.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import InArticleAd from '../../components/InArticleAd.astro';
+import { areaGroups, typeGroups } from '../../data/siteData';
+
+export function getStaticPaths() {
+  return areaGroups.map((group: any) => ({ params: { slug: group.slug }, props: { group } }));
+}
+
+const { group } = Astro.props;
+const title = group.title;
+const description = `${group.description} 후기, 주소, 전화번호, 지도, 방문 전 확인사항을 함께 제공합니다.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-head">
+    <p class="eyebrow">지역 묶음</p>
+    <h1>{group.title}</h1>
+    <p>{description}</p>
+  </section>
+
+  <AdSlot position="top" />
+
+  <section class="decision-section prose-section">
+    <article>
+      <h2>방문 전 선택 기준</h2>
+      <p>{group.name}을 찾을 때는 가까운 병원만 비교하기보다 전화 연결 여부, 운영시간, 예약, 주차, 원하는 진료 가능 범위를 함께 확인하는 것이 좋습니다.</p>
+      <p>후기는 방문 전 분위기와 이용 흐름을 가늠하기 위한 참고 자료입니다. 운영시간, 예약, 주차처럼 실제 방문에 영향을 주는 부분을 함께 확인하는 것이 좋습니다.</p>
+    </article>
+  </section>
+
+  <section class="decision-section">
+    <div class="section-heading">
+      <span>지도</span>
+      <h2>{group.name} 위치 보기</h2>
+      <p>이 묶음 페이지에 포함된 동물병원을 지도에서 함께 확인할 수 있습니다.</p>
+    </div>
+    <SimpleMap items={group.items} title={group.name} />
+  </section>
+
+  <InArticleAd />
+
+  <section class="decision-section section-tint">
+    <div class="section-heading">
+      <span>목록</span>
+      <h2>{group.items.length.toLocaleString('ko-KR')}곳 정리</h2>
+    </div>
+    <div class="business-grid">{group.items.map((item: any) => <BusinessCard item={item} />)}</div>
+  </section>
+
+  {typeGroups.length > 0 && (
+    <section class="decision-section">
+      <div class="section-heading"><span>관련 유형</span><h2>진료유형으로 다시 보기</h2></div>
+      <div class="topic-grid">
+        {typeGroups.slice(0, 8).map((type: any) => (
+          <a class="topic-card" href={`/type/${type.slug}/`}><strong>{type.name}</strong><span>{type.items.length}곳</span></a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <AdSlot position="bottom" />
+</BaseLayout>

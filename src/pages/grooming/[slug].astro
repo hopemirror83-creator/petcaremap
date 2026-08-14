@@ -1,0 +1,274 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import InArticleAd from '../../components/InArticleAd.astro';
+import SimpleMap from '../../components/SimpleMap.astro';
+import { petServiceItems } from '../../data/petServiceData';
+
+export function getStaticPaths() {
+  return petServiceItems
+    .filter((item: any) => item.typePath === 'grooming')
+    .map((item: any) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+const { item } = Astro.props;
+const related = petServiceItems
+  .filter((candidate: any) => candidate.slug !== item.slug && candidate.typePath === item.typePath)
+  .sort((a: any, b: any) => Number(b.dong === item.dong) - Number(a.dong === item.dong))
+  .slice(0, 6);
+const detailUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const reviewCards = item.reviewAnalysisCards?.length ? item.reviewAnalysisCards : [
+  { label: '후기 자료', value: item.reviewCoverageLabel || '후기 보강 예정', description: '공개 후기와 네이버 장소 정보를 순차적으로 보강할 예정입니다.' },
+  { label: '네이버 지도', value: item.naverMapUrl ? '확인 가능' : '개별확인필요', description: '지도 링크를 통해 위치를 확인할 수 있습니다.' },
+  { label: '지역', value: item.dong || item.district, description: `${item.areaLabel} 기준으로 정리했습니다.` },
+  { label: '서비스', value: item.typeLabel, description: item.serviceText }
+];
+const featureCards = item.featureCards?.length ? item.featureCards : [
+  { label: '애견미용', value: '확인됨', description: '공공데이터 또는 네이버 장소 기준으로 확인되는 서비스입니다.' },
+  { label: '목욕', value: '개별확인필요', description: '목욕 포함 여부와 추가 비용은 업체별로 확인이 필요합니다.' },
+  { label: '위생미용', value: '개별확인필요', description: '발톱, 발바닥, 귀 관리 포함 항목을 확인해보세요.' },
+  { label: '예약', value: '개별확인필요', description: '미용은 예약제로 운영되는 경우가 많아 접수 방식을 확인하는 편이 좋습니다.' }
+];
+const articleSections = item.articleSections?.length ? item.articleSections : [
+  {
+    heading: '공개 후기에서 확인되는 내용',
+    body: item.reviewSection || '현재 이 업체의 공개 후기 자료를 보강 중입니다. 위치와 기본 정보를 먼저 정리했습니다.'
+  },
+  {
+    heading: '방문 전 참고하면 좋은 정보',
+    body: '애견미용은 견종, 털 엉킴, 피부 상태, 원하는 미용 스타일에 따라 소요 시간과 비용이 달라질 수 있습니다. 예약 전 원하는 컷 사진과 반려견의 특이사항을 함께 전달하면 상담이 더 구체적일 수 있습니다.'
+  }
+];
+const sourceRefs = item.sourceRefs || [];
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: item.name,
+  url: detailUrl,
+  telephone: item.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: item.displayAddress || item.roadAddress || item.lotAddress,
+    addressLocality: item.areaLabel,
+    addressRegion: item.city,
+    addressCountry: 'KR'
+  },
+  sameAs: [item.naverMapUrl, item.homepage].filter(Boolean)
+};
+function paragraphs(value: string) {
+  return splitReadableParagraphs(value)
+    .filter(Boolean);
+}
+
+function paragraphClass(text: string) {
+  return isInlineSubheading(text) ? 'copy-subheading' : undefined;
+}
+
+function isInlineSubheading(text: string) {
+  const trimmed = String(text || '').trim();
+  if (!trimmed || trimmed.length > 72) return false;
+  if (/[.!?。]$/.test(trimmed)) return false;
+  if (/습니다|입니다|됩니다|합니다|좋습니다|있습니다/.test(trimmed)) return false;
+  return /(후기|기본정보|케어|기술력|환경|모습|정보|이유|특별함|방문 전|선택)/.test(trimmed);
+}
+
+function splitReadableParagraphs(value: string) {
+  const source = String(value || '')
+    .replace(/\r/g, '')
+    .split(/\n+/)
+    .map((text) => text.trim())
+    .filter(Boolean);
+
+  const result: string[] = [];
+  for (const text of source) {
+    if (text.length <= 220) {
+      result.push(text);
+      continue;
+    }
+    const sentences = text
+      .replace(/([.!?。]|다\.|요\.|죠\.|니다\.|습니다\.)\s+(?=[가-힣A-Z0-9'“"])/g, '$1|')
+      .split('|')
+      .map((part) => part.trim())
+      .filter(Boolean);
+    let current = '';
+    for (const sentence of sentences) {
+      if ((current + ' ' + sentence).trim().length > 220 && current) {
+        result.push(current.trim());
+        current = sentence;
+      } else {
+        current = `${current} ${sentence}`.trim();
+      }
+    }
+    if (current) result.push(current.trim());
+  }
+  return result;
+}
+---
+
+<BaseLayout title={item.title} description={item.metaDescription} schema={schema}>
+  <section class="detail-shell service-detail-shell">
+    <div class="detail-hero-card">
+      <p class="eyebrow">애견미용 상세</p>
+      <h1>{item.title}</h1>
+      <p>{item.oneLineSummary || item.metaDescription}</p>
+      <div class="hero-action-row">
+        <a class="primary-link" href={item.naverMapUrl} target="_blank" rel="noopener">네이버 지도 바로가기</a>
+        {item.homepage && <a class="secondary-link" href={item.homepage} target="_blank" rel="noopener">공식 링크</a>}
+        <span class="status-pill">{item.reviewCoverageLabel}</span>
+      </div>
+      <div class="hero-meta-grid">
+        <div><span>지역</span><strong>{item.areaLabel}</strong></div>
+        <div><span>분류</span><strong>{item.typeLabel}</strong></div>
+        <div><span>주소</span><strong>{item.displayAddress || item.roadAddress || item.lotAddress || '개별확인필요'}</strong></div>
+        <div><span>전화</span><strong>{item.phone || '개별확인필요'}</strong></div>
+        <div><span>확인 상태</span><strong>{item.operationStatus || '정보 확인 중'}</strong></div>
+        <div><span>서비스</span><strong>{item.serviceText}</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <AdSlot position="top" />
+
+  <section class="decision-section service-review-panel">
+    <span>후기 요약</span>
+    <h2>공개된 후기와 업체 기본정보</h2>
+    <div class="paragraph-stack service-readable-copy">
+      {paragraphs(item.reviewSection || '현재 공개 후기 자료를 보강 중입니다.').map((text: string) => <p class={paragraphClass(text)}>{text}</p>)}
+    </div>
+    {item.reviewSourceSummary?.chips?.length && (
+      <div class="service-chip-row">
+        {item.reviewSourceSummary.chips.map((chip: string) => <span>{chip}</span>)}
+      </div>
+    )}
+  </section>
+
+  <section class="decision-section">
+    <div class="section-heading">
+      <span>후기 분석</span>
+      <h2>후기에서 살펴볼 만한 포인트</h2>
+    </div>
+    <div class="service-card-grid">
+      {reviewCards.map((card: any) => (
+        <div class="service-card">
+          <strong>{card.label}</strong>
+          <span>{card.value}</span>
+          <p>{card.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="decision-section service-check-grid">
+    <div class="section-heading">
+      <span>방문 전 비교</span>
+      <h2>애견미용샵을 고를 때 볼 만한 기준</h2>
+    </div>
+    <div class="check-grid">
+      {featureCards.map((card: any) => (
+        <div class="check-card">
+          <strong>{card.label}</strong>
+          <b>{card.value}</b>
+          <p>{card.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <InArticleAd />
+
+  <section class="decision-section service-prose prose-section">
+    <article>
+      {articleSections.map((section: any) => (
+        <section class="article-block service-article-block">
+          <h2>{section.heading}</h2>
+          <div class="paragraph-stack service-readable-copy">
+            {paragraphs(section.body).map((text: string) => <p class={paragraphClass(text)}>{text}</p>)}
+          </div>
+        </section>
+      ))}
+    </article>
+  </section>
+
+  {item.decisionGuide && (
+    <section class="decision-section">
+      <div class="section-heading">
+        <span>의사결정</span>
+        <h2>이 업체를 볼 때 나눠서 확인할 점</h2>
+      </div>
+      <div class="service-decision-grid">
+        <div class="service-card">
+          <strong>잘 맞을 수 있는 경우</strong>
+          <ul>{(item.decisionGuide.goodFor || []).map((text: string) => <li>{text}</li>)}</ul>
+        </div>
+        <div class="service-card">
+          <strong>방문 전 확인</strong>
+          <ul>{(item.decisionGuide.checkBefore || []).map((text: string) => <li>{text}</li>)}</ul>
+        </div>
+        <div class="service-card">
+          <strong>비교 기준</strong>
+          <ul>{(item.decisionGuide.compareWith || []).map((text: string) => <li>{text}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="decision-section">
+    <div class="section-heading">
+      <span>위치</span>
+      <h2>지도와 주소</h2>
+    </div>
+    <SimpleMap items={[item]} />
+  </section>
+
+  {item.faqItems?.length && (
+    <section class="decision-section">
+      <div class="section-heading">
+        <span>FAQ</span>
+        <h2>자주 확인하는 질문</h2>
+      </div>
+      <div class="faq-list">
+        {item.faqItems.map((faq: any) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="decision-section section-tint">
+    <div class="section-heading">
+      <span>근처 애견미용</span>
+      <h2>서해구에서 함께 볼 만한 업체</h2>
+    </div>
+    <div class="service-card-grid">
+      {related.map((target: any) => (
+        <a class="service-card" href={`/${target.typePath}/${target.slug}/`}>
+          <strong>{target.name}</strong>
+          <span>{target.areaLabel}</span>
+          <p>{target.displayAddress || target.roadAddress || target.lotAddress}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {sourceRefs.length > 0 && (
+    <section class="decision-section">
+      <div class="section-heading">
+        <span>참고 링크</span>
+        <h2>후기와 공개 정보 확인</h2>
+      </div>
+      <ul class="reference-list">
+        {sourceRefs.map((ref: any) => (
+          <li>
+            <a href={ref.link || ref.url} target="_blank" rel="noopener">{ref.title}</a>
+            {ref.summary && <p>{ref.summary}</p>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <AdSlot position="bottom" />
+</BaseLayout>

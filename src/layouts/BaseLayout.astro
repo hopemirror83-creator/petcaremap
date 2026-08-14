@@ -1,0 +1,82 @@
+﻿---
+import '../styles/global.css';
+import { siteConfig } from '../data/siteConfig';
+
+interface Props {
+  title: string;
+  description: string;
+  schema?: Record<string, any>;
+}
+
+const { title, description, schema } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site || 'https://petcaremap.product-pack.com').toString();
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <meta name="theme-color" content="#0b63f6" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="google-site-verification" content="bLNkE5R1A2WDcIu22lXsObPTeMIBOGa7tVmQXGTZvZg" />
+    <meta name="naver-site-verification" content="843a46d17b3c2d0e87c36c49895028b19848a459" />
+    <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2849585811939559" crossorigin="anonymous"></script>
+    {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  </head>
+  <body>
+    <script is:inline type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+    <script is:inline type="text/javascript">
+      if (!window.wcs_add) window.wcs_add = {};
+      window.wcs_add["wa"] = "1782bbb8c836590";
+      if (window.wcs) {
+        window.wcs_do();
+      }
+    </script>
+    <header class="site-header">
+      <a class="brand" href="/">{siteConfig.siteName}</a>
+      <nav aria-label="주요 메뉴">
+        <a href="/type/24h-clinic/">24시</a>
+        <a href="/type/night-clinic/">야간진료</a>
+        <a href="/type/emergency-clinic/">응급</a>
+        <a href="/type/exotic-clinic/">특수동물</a>
+        <a href="/pet-service/incheon-seohae-grooming/">애견미용</a>
+        <a href="/pet-service/incheon-seohae-boarding/">애견호텔</a>
+      </nav>
+    </header>
+    <section class="ai-review-notice" aria-label="AI 후기 분석 안내">
+      <div>
+        <strong>AI 후기 분석 안내</strong>
+        <p>
+          본 페이지의 후기 요약은 네이버 지도, 블로그 등 공개된 정보를 바탕으로 반복적으로 언급되는 내용을 AI가 요약한 것입니다.
+          실제 진료 결과나 치료 효과를 보장하는 내용이 아닙니다. 진료 여부와 의료적 판단은 병원에 직접 확인하시기 바랍니다.
+        </p>
+      </div>
+    </section>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="footer-meta">
+        <strong>{siteConfig.siteName}</strong>
+        <span>운영자: 스토리앤</span>
+        <span>문의: <a href="mailto:storyuman@gmail.com">storyuman@gmail.com</a></span>
+        <span>사업자등록번호: 409-58-00440</span>
+      </div>
+      <nav class="footer-links" aria-label="사이트 안내">
+        <a href="/about/">운영자 안내</a>
+        <a href="/privacy/">개인정보처리방침</a>
+        <a href="/correction/">정보 정정 요청</a>
+      </nav>
+    </footer>
+  </body>
+</html>

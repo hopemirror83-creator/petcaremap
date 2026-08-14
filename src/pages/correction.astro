@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/siteConfig';
+
+const title = `정보 정정 및 삭제 요청 | ${siteConfig.siteName}`;
+const description = `${siteConfig.siteName}에 표시된 업체 정보, 위치, 운영시간, 참고 링크의 정정 및 삭제 요청 방법을 안내합니다.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="info-page">
+    <div class="info-hero">
+      <span>정보 정정 요청</span>
+      <h1>정보 정정 및 삭제 요청</h1>
+      <p>
+        공개 데이터와 검색 결과를 바탕으로 정보를 정리하고 있지만, 실제 현장 상황과 다를 수 있습니다.
+        잘못된 정보가 있다면 이메일로 알려주세요.
+      </p>
+    </div>
+
+    <div class="info-grid">
+      <article class="info-card">
+        <h2>정정 요청 가능 항목</h2>
+        <ul class="info-bullets">
+          <li>폐업, 폐쇄, 이전, 명칭 변경</li>
+          <li>주소, 위치, 지도 좌표 오류</li>
+          <li>요금, 가격, 운영시간, 예약 가능 여부 변경</li>
+          <li>전화번호 또는 관리기관 정보 오류</li>
+          <li>후기 후보 또는 참고 링크가 해당 장소와 관련성이 낮은 경우</li>
+        </ul>
+      </article>
+
+      <article class="info-card">
+        <h2>요청 방법</h2>
+        <p>
+          <a href="mailto:storyuman@gmail.com">storyuman@gmail.com</a>으로 아래 내용을 보내주세요.
+        </p>
+        <ul class="info-bullets">
+          <li>수정이 필요한 페이지 주소(URL)</li>
+          <li>업체명 또는 장소명</li>
+          <li>현재 페이지에서 잘못된 내용</li>
+          <li>수정되어야 할 내용</li>
+          <li>확인 가능한 공식 자료 또는 현장 사진</li>
+        </ul>
+      </article>
+
+      <article class="info-card accent-card">
+        <h2>처리 안내</h2>
+        <p>
+          요청 내용은 확인 후 순차적으로 반영합니다. 폐업, 이전, 잘못된 위치처럼 명백한 오류는 우선
+          수정하며, 공개 자료와 현장 확인이 필요한 내용은 검토 시간이 걸릴 수 있습니다.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
