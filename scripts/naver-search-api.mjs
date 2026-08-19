@@ -9,6 +9,8 @@ export function hasNaverSearchCredentials() {
 }
 
 export function getNaverSearchMode() {
+  if (process.env.NAVER_SEARCH_MODE === 'legacy') return 'legacy';
+  if (process.env.NAVER_SEARCH_MODE === 'api-hub') return 'api-hub';
   return process.env.NAVER_API_HUB_CLIENT_ID && process.env.NAVER_API_HUB_CLIENT_SECRET ? 'api-hub' : 'legacy';
 }
 
