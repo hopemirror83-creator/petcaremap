@@ -11,3 +11,4 @@ src/data/petServiceData.ts
 data/raw-*.csv
 data/d1-public-businesses.sql
 data/d1-enrichment.sql
+data/pet-service-enrichment.json

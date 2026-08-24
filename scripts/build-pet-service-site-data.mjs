@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import proj4 from 'proj4';
 
@@ -7,6 +7,7 @@ const GROOMING_FILE = path.join(ROOT, 'data', 'public-grooming-businesses.json')
 const BOARDING_FILE = path.join(ROOT, 'data', 'public-boarding-businesses.json');
 const MANUAL_FILE = path.join(ROOT, 'data', 'manual-pet-service-businesses.json');
 const ENRICHMENT_FILE = path.join(ROOT, 'data', 'pet-service-enrichment.json');
+const ENRICHMENT_DIR = path.join(ROOT, 'data', 'pet-service-enrichment');
 const OUTPUT_FILE = path.join(ROOT, 'src', 'data', 'petServiceData.ts');
 const PUBLIC_COORDINATE_CRS = 'EPSG:5174';
 const CP1252_REVERSE = new Map(
@@ -55,7 +56,7 @@ const TARGET_DISTRICTS = configuredDistricts
 const groomingRows = repairMojibakeDeep(await readJson(GROOMING_FILE, []));
 const boardingRows = repairMojibakeDeep(await readJson(BOARDING_FILE, []));
 const manualRows = repairMojibakeDeep(await readJson(MANUAL_FILE, []));
-const enrichmentRows = repairMojibakeDeep(await readJson(ENRICHMENT_FILE, []));
+const enrichmentRows = repairMojibakeDeep(await readEnrichmentRows());
 const enrichmentMap = new Map(enrichmentRows.map((row) => [row.sourceId, row]));
 
 const items = [
@@ -297,6 +298,22 @@ async function readJson(file, fallback) {
   } catch {
     return fallback;
   }
+}
+
+async function readEnrichmentRows() {
+  const shardRows = [];
+  try {
+    const files = (await readdir(ENRICHMENT_DIR))
+      .filter((file) => file.endsWith('.json'))
+      .sort((a, b) => a.localeCompare(b));
+    for (const file of files) {
+      const rows = await readJson(path.join(ENRICHMENT_DIR, file), []);
+      if (Array.isArray(rows)) shardRows.push(...rows);
+    }
+  } catch {
+    // Shard directory is optional for older checkouts.
+  }
+  return shardRows.length ? shardRows : readJson(ENRICHMENT_FILE, []);
 }
 
 function repairMojibakeDeep(value) {

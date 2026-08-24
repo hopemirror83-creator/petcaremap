@@ -15,6 +15,7 @@
     "sync:public-data": "node scripts/sync-public-data.mjs",
     "sync:pet-services": "node scripts/sync-pet-service-public-data.mjs",
     "sync:naver-local": "node scripts/sync-naver-local.mjs",
+    "split:pet-service-enrichment": "node scripts/split-pet-service-enrichment.mjs",
     "collect:naver-reviews": "node scripts/collect-naver-reviews.mjs",
     "generate:review-pages": "node scripts/generate-review-pages.mjs",
     "indexing:list": "node scripts/write-indexing-targets.mjs",
