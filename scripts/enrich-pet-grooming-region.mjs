@@ -44,13 +44,16 @@ const vertexTargets = targetCandidates
   .filter((row) => force || !draftMap.has(row.sourceId))
   .slice(0, limit);
 
-const token = vertexTargets.length ? await getAccessToken(credentials) : '';
+let token = vertexTargets.length ? await getAccessToken(credentials) : '';
 const nextDrafts = [...drafts];
 
 for (const candidate of vertexTargets) {
   const row = publicMap.get(candidate.sourceId);
   if (!row) continue;
-  const draft = await generateDraft(token, row, candidate);
+  const draft = await generateDraft(() => token, async () => {
+    token = await getAccessToken(credentials);
+    return token;
+  }, row, candidate);
   upsert(nextDrafts, {
     sourceId: candidate.sourceId,
     name: row.displayName || row.name,
@@ -89,7 +92,7 @@ const summary = [...enrichmentMap.values()]
   }, {});
 console.log(JSON.stringify({ district, candidates: targetCandidates.length, generated: summary }, null, 2));
 
-async function generateDraft(tokenValue, row, candidate) {
+async function generateDraft(getToken, refreshToken, row, candidate) {
   const url = `https://${location}-aiplatform.googleapis.com/v1/projects/${projectId}/locations/${location}/publishers/google/models/${model}:generateContent`;
   const prompt = buildPrompt(row, candidate);
   for (let attempt = 0; attempt < 4; attempt += 1) {
@@ -99,7 +102,7 @@ async function generateDraft(tokenValue, row, candidate) {
         method: 'POST',
         signal: AbortSignal.timeout(requestTimeoutMs),
         headers: {
-          Authorization: `Bearer ${tokenValue}`,
+          Authorization: `Bearer ${getToken()}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -125,6 +128,11 @@ async function generateDraft(tokenValue, row, candidate) {
       const text = json.candidates?.[0]?.content?.parts?.map((part) => part.text || '').join('').trim();
       if (!text) throw new Error(`Vertex returned empty text for ${row.displayName || row.name}`);
       return normalizeDraft(parseVertexJson(text));
+    }
+    if (/401|UNAUTHENTICATED|ACCESS_TOKEN_EXPIRED/i.test(body) && attempt < 3) {
+      console.log(`Vertex auth refresh ${attempt + 1}: ${row.displayName || row.name}`);
+      await refreshToken();
+      continue;
     }
     if (!/429|RESOURCE_EXHAUSTED|500|502|503|504|UNAVAILABLE|DEADLINE_EXCEEDED/i.test(body) || attempt === 3) {
       throw new Error(`Vertex failed ${response.status}: ${body.slice(0, 500)}`);
