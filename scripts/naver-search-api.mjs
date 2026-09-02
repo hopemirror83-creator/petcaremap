@@ -9,7 +9,13 @@ export function hasNaverSearchCredentials() {
 }
 
 export function getNaverSearchMode() {
-  if (process.env.NAVER_SEARCH_MODE === 'legacy') return 'legacy';
+  if (process.env.NAVER_SEARCH_MODE === 'legacy') {
+    const sunset = process.env.NAVER_LEGACY_SUNSET;
+    if (sunset && Date.now() > Date.parse(`${sunset}T23:59:59+09:00`)) {
+      return 'api-hub';
+    }
+    return 'legacy';
+  }
   if (process.env.NAVER_SEARCH_MODE === 'api-hub') return 'api-hub';
   return process.env.NAVER_API_HUB_CLIENT_ID && process.env.NAVER_API_HUB_CLIENT_SECRET ? 'api-hub' : 'legacy';
 }
