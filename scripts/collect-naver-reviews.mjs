@@ -95,7 +95,7 @@ for (const base of targets) {
     const hasSources = sourceRefs.length > 0;
     diagnostics[hasSources ? 'withSources' : 'withoutSources'] += 1;
 
-    if (!hasSources && previousHasSources) {
+    if (!hasSources && previousHasSources && !force) {
       collected.push(previous);
       console.log(`Kept existing review sources: ${row.name} (${previous.reviewSourceCount || previous.sourceRefs.length})`);
       await wait(delayMs);

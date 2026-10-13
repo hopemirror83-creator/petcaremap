@@ -35,6 +35,7 @@ const targetSourceIds = new Set(
 );
 const SEOUL_PRIORITY_DISTRICTS = new Set(['강남구', '송파구', '마포구', '성북구', '도봉구']);
 const targetScope = process.env.TARGET_SCOPE || 'incheon-seoul-priority';
+const priorityRefresh = process.env.PRIORITY_REFRESH === '1';
 
 if (!credentialsPath) {
   throw new Error('GOOGLE_APPLICATION_CREDENTIALS is required for Vertex AI Gemini generation.');
@@ -78,7 +79,13 @@ for (const item of targets) {
   try {
     const page = await generateArticleWithRetry(token, item, reviewData);
     const existingIndex = generated.findIndex((row) => row.sourceId === item.sourceId);
-    const nextPage = { sourceId: item.sourceId, ...page, generatedBy: `vertex:${model}`, generatedAt: new Date().toISOString() };
+    const nextPage = {
+      sourceId: item.sourceId,
+      ...page,
+      priorityRefresh,
+      generatedBy: `vertex:${model}`,
+      generatedAt: new Date().toISOString()
+    };
     if (existingIndex >= 0) {
       generated[existingIndex] = nextPage;
     } else {
@@ -123,7 +130,8 @@ async function generateArticleWithRetry(token, item, reviewData) {
 }
 
 async function generateArticle(token, item, reviewData) {
-  const url = `https://${location}-aiplatform.googleapis.com/v1/projects/${projectId}/locations/${location}/publishers/google/models/${model}:generateContent`;
+  const vertexHost = location === 'global' ? 'aiplatform.googleapis.com' : `${location}-aiplatform.googleapis.com`;
+  const url = `https://${vertexHost}/v1/projects/${projectId}/locations/${location}/publishers/google/models/${model}:generateContent`;
   const prompt = buildPrompt(item, reviewData);
   const response = await fetch(url, {
     method: 'POST',
@@ -137,6 +145,7 @@ async function generateArticle(token, item, reviewData) {
       generationConfig: {
         temperature: 0.35,
         topP: 0.9,
+        maxOutputTokens: 4096,
         responseMimeType: 'application/json'
       }
     })
@@ -150,7 +159,7 @@ async function generateArticle(token, item, reviewData) {
 }
 
 function isRetryableError(error) {
-  return /\b(429|500|502|503|504)\b|RESOURCE_EXHAUSTED|UNAVAILABLE|DEADLINE_EXCEEDED/i.test(error.message || '');
+  return /\b(429|500|502|503|504)\b|RESOURCE_EXHAUSTED|UNAVAILABLE|DEADLINE_EXCEEDED|Unterminated string|Expected double-quoted property|Unexpected end of JSON/i.test(error.message || '');
 }
 
 function buildPrompt(item, reviewData) {
@@ -160,6 +169,7 @@ function buildPrompt(item, reviewData) {
     '제공된 후기 자료의 제목과 요약에서 반복적으로 보이는 내용을 근거로만 분석해 주세요.',
     '문체는 차분하고 객관적인 정보 사이트 톤으로 작성합니다. 광고 문구, 과장, 미사여구, 병원 입장의 약속 표현은 쓰지 않습니다.',
     '검색 최적화(SEO)를 고려하되 키워드는 자연스럽게만 사용합니다.',
+    'SEO 제목은 반드시 업체 정확한 명칭으로 시작하고, 뒤에 후기·진료정보·지역 중 실제 자료에 맞는 검색어를 자연스럽게 붙입니다.',
     '한국 독자가 실제로 쓰는 표현을 사용하고, 영어식 표현이나 어색한 번역체는 피합니다.',
     '',
     '작성 기준:',
@@ -333,6 +343,8 @@ function cleanText(value = '') {
     .replaceAll('진료 능력에 대한 기대를 가질 수 있습니다', '관련 진료 경험이 후기에서 언급됩니다')
     .replaceAll('믿고 맡길 수 있는', '방문 전 참고할 만한')
     .replaceAll('좋은 선택지가 될 것입니다', '비교 후보로 살펴볼 수 있습니다')
+    .replace(/좋은 선택지가 될 수 있으나/g, '비교 후보로 볼 수 있으나')
+    .replace(/완벽하게 보호자 입장에서 똘똘 뭉친/g, '보호자 입장을 세심하게 고려한')
     .replaceAll('추천드립니다', '살펴볼 수 있습니다')
     .replace(/\s{2,}/g, ' ')
     .trim();

@@ -279,8 +279,12 @@ function normalizeBusiness(row, reviewData = {}, generated = {}, manualPlace = {
     mentionedCards,
     visitChecklist,
     faqItems,
-    title: buildDetailTitle({ ...row, name, areaLabel }, services),
-    metaDescription: buildMetaDescription({ ...row, name, areaLabel, naverMapReviewCount }, services, reviewCoverageLabel),
+    title: generated.priorityRefresh && cleanVisibleText(generated.title)
+      ? cleanVisibleText(generated.title)
+      : buildDetailTitle({ ...row, name, areaLabel }, services),
+    metaDescription: generated.priorityRefresh && cleanVisibleText(generated.metaDescription)
+      ? cleanVisibleText(generated.metaDescription)
+      : buildMetaDescription({ ...row, name, areaLabel, naverMapReviewCount }, services, reviewCoverageLabel),
     introSection: cleanVisibleText(generated.introSection) || `${name}은 ${areaLabel || '해당 지역'}에서 확인되는 동물병원입니다. 방문 전에는 운영시간, 예약 필요 여부, 진료 가능 범위를 병원에 직접 확인하는 것이 좋습니다.`,
     serviceSection: cleanVisibleText(generated.serviceSection) || buildServiceSection(services),
     checkSection: cleanVisibleText(generated.checkSection) || buildCheckSection(services),
@@ -1429,6 +1433,8 @@ function cleanVisibleText(value = '') {
     .replaceAll('후기 신호', '후기')
     .replaceAll('검색 신호', '검색 결과')
     .replaceAll('후기 후보', '후기')
+    .replace(/좋은 선택지가 될 수 있으나/g, '비교 후보로 볼 수 있으나')
+    .replace(/완벽하게 보호자 입장에서 똘똘 뭉친/g, '보호자 입장을 세심하게 고려한')
     .replace(/\s{2,}/g, ' ')
     .trim();
 }

@@ -1,0 +1,502 @@
+[
+  {
+    "rank": 1,
+    "sourceId": "351050001020240001",
+    "name": "서울든든동물병원",
+    "city": "인천",
+    "district": "미추홀구",
+    "dong": "문학동",
+    "reason": "search-query-top30",
+    "evidence": "서울든든동물병원"
+  },
+  {
+    "rank": 2,
+    "sourceId": "357000001020200001",
+    "name": "디디동물병원",
+    "city": "인천",
+    "district": "강화군",
+    "dong": "강화읍",
+    "reason": "search-query-top30",
+    "evidence": "디디동물병원"
+  },
+  {
+    "rank": 3,
+    "sourceId": "350100001020011003",
+    "name": "한양한방동물병원",
+    "city": "인천",
+    "district": "제물포구",
+    "dong": "용동",
+    "reason": "search-query-top30",
+    "evidence": "한양한방동물병원"
+  },
+  {
+    "rank": 4,
+    "sourceId": "356100001020200002",
+    "name": "진현우동물병원",
+    "city": "인천",
+    "district": "서해구",
+    "dong": "석남동",
+    "reason": "search-query-top30",
+    "evidence": "진현우동물병원"
+  },
+  {
+    "rank": 5,
+    "sourceId": "350100001020110001",
+    "name": "송림동물병원",
+    "city": "인천",
+    "district": "제물포구",
+    "dong": "송림동",
+    "reason": "search-query-top30",
+    "evidence": "송림동물병원"
+  },
+  {
+    "rank": 6,
+    "sourceId": "313000001019880001",
+    "name": "서진동물병원",
+    "city": "서울",
+    "district": "마포구",
+    "dong": "노고산동",
+    "reason": "search-query-top30",
+    "evidence": "서진동물병원"
+  },
+  {
+    "rank": 7,
+    "sourceId": "320000001020090001",
+    "name": "서진동물병원",
+    "city": "서울",
+    "district": "관악구",
+    "dong": "신림동",
+    "reason": "search-query-top30",
+    "evidence": "서진동물병원"
+  },
+  {
+    "rank": 8,
+    "sourceId": "353000001020180001",
+    "name": "찬샘동물병원",
+    "city": "인천",
+    "district": "남동구",
+    "dong": "구월동",
+    "reason": "search-query-top30",
+    "evidence": "찬샘동물병원"
+  },
+  {
+    "rank": 9,
+    "sourceId": "356500001020220003",
+    "name": "24시 더원 동물병원",
+    "city": "인천",
+    "district": "검단구",
+    "dong": "원당동",
+    "reason": "search-query-top30",
+    "evidence": "24시더원동물병원"
+  },
+  {
+    "rank": 10,
+    "sourceId": "355000001020080001",
+    "name": "해림동물병원",
+    "city": "인천",
+    "district": "계양구",
+    "dong": "작전동",
+    "reason": "search-query-top30",
+    "evidence": "해림동물병원"
+  },
+  {
+    "rank": 11,
+    "sourceId": "354000001020060003",
+    "name": "조재진동물병원",
+    "city": "인천",
+    "district": "부평구",
+    "dong": "산곡동",
+    "reason": "search-query-top30",
+    "evidence": "조재진동물병원"
+  },
+  {
+    "rank": 12,
+    "sourceId": "354000001019900002",
+    "name": "세림동물병원",
+    "city": "인천",
+    "district": "부평구",
+    "dong": "산곡동",
+    "reason": "search-query-top30",
+    "evidence": "부평세림동물병원"
+  },
+  {
+    "rank": 13,
+    "sourceId": "351050001020190002",
+    "name": "주안동물메디컬센터",
+    "city": "인천",
+    "district": "미추홀구",
+    "dong": "주안동",
+    "reason": "search-query-top30",
+    "evidence": "주안동물메디컬센터"
+  },
+  {
+    "rank": 14,
+    "sourceId": "323000001020220008",
+    "name": "리베동물메디컬센터",
+    "city": "서울",
+    "district": "송파구",
+    "dong": "삼전동",
+    "reason": "search-query-top30",
+    "evidence": "리베동물병원"
+  },
+  {
+    "rank": 15,
+    "sourceId": "349100001020040001",
+    "name": "신공항동물병원",
+    "city": "인천",
+    "district": "영종구",
+    "dong": "운남동",
+    "reason": "search-query-top30",
+    "evidence": "신공항동물병원"
+  },
+  {
+    "rank": 16,
+    "sourceId": "323000001020220006",
+    "name": "잠실동물병원",
+    "city": "서울",
+    "district": "송파구",
+    "dong": "신천동",
+    "reason": "search-query-top30",
+    "evidence": "잠실동물병원 햄스터"
+  },
+  {
+    "rank": 17,
+    "sourceId": "356100001020200003",
+    "name": "24시 더블유 동물의료센터",
+    "city": "인천",
+    "district": "서해구",
+    "dong": "청라동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:155"
+  },
+  {
+    "rank": 18,
+    "sourceId": "352000001020230002",
+    "name": "24시 송도 온 동물의료센터",
+    "city": "인천",
+    "district": "연수구",
+    "dong": "송도동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:155"
+  },
+  {
+    "rank": 19,
+    "sourceId": "352000001020150002",
+    "name": "24시 송도힐 동물메디컬센터",
+    "city": "인천",
+    "district": "연수구",
+    "dong": "송도동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:155"
+  },
+  {
+    "rank": 20,
+    "sourceId": "352000001020230005",
+    "name": "24시 연희동물의료센터",
+    "city": "인천",
+    "district": "연수구",
+    "dong": "청학동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:155"
+  },
+  {
+    "rank": 21,
+    "sourceId": "356100001020250001",
+    "name": "24시 인천 이음동물의료센터",
+    "city": "인천",
+    "district": "서해구",
+    "dong": "심곡동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:155"
+  },
+  {
+    "rank": 22,
+    "sourceId": "352000001020200002",
+    "name": "24시송도오케이동물의료센터",
+    "city": "인천",
+    "district": "연수구",
+    "dong": "송도동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:155"
+  },
+  {
+    "rank": 23,
+    "sourceId": "320000001020190001",
+    "name": "24시 굿케어동물의료센터",
+    "city": "서울",
+    "district": "관악구",
+    "dong": "봉천동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 24,
+    "sourceId": "319000001020250002",
+    "name": "24시 데이원 동물의료센터",
+    "city": "서울",
+    "district": "동작구",
+    "dong": "사당동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 25,
+    "sourceId": "309000001020230001",
+    "name": "24시 딜라이트 동물의료센터",
+    "city": "서울",
+    "district": "도봉구",
+    "dong": "창동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 26,
+    "sourceId": "314000001020230004",
+    "name": "24시 로운동물의료센터",
+    "city": "서울",
+    "district": "양천구",
+    "dong": "목동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 27,
+    "sourceId": "323000001020220007",
+    "name": "24시 스탠다드 동물의료센터",
+    "city": "서울",
+    "district": "송파구",
+    "dong": "거여동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 28,
+    "sourceId": "302000001020160002",
+    "name": "24시 시유동물메디컬센터",
+    "city": "서울",
+    "district": "용산구",
+    "dong": "이촌동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 29,
+    "sourceId": "322000001020250005",
+    "name": "24시 온숲 동물의료센터",
+    "city": "서울",
+    "district": "강남구",
+    "dong": "역삼동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 30,
+    "sourceId": "303000001020070002",
+    "name": "24시센트럴동물메디컬센터",
+    "city": "서울",
+    "district": "성동구",
+    "dong": "행당동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 31,
+    "sourceId": "311000001020130001",
+    "name": "24시스마트동물메디컬센터",
+    "city": "서울",
+    "district": "은평구",
+    "dong": "응암동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 32,
+    "sourceId": "315000001020040003",
+    "name": "24시아프리카동물메디컬센터",
+    "city": "서울",
+    "district": "강서구",
+    "dong": "등촌동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 33,
+    "sourceId": "315000001020220001",
+    "name": "24시연동물의료센터",
+    "city": "서울",
+    "district": "강서구",
+    "dong": "화곡동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 34,
+    "sourceId": "311000001020210001",
+    "name": "24시예담동물의료센터",
+    "city": "서울",
+    "district": "은평구",
+    "dong": "역촌동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 35,
+    "sourceId": "314000001020220001",
+    "name": "24시월드펫동물메디컬센터",
+    "city": "서울",
+    "district": "양천구",
+    "dong": "신월동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 36,
+    "sourceId": "323000001020130001",
+    "name": "24시잠실ON동물의료센터",
+    "city": "서울",
+    "district": "송파구",
+    "dong": "잠실동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 37,
+    "sourceId": "308000001020250001",
+    "name": "강북24시 N동물의료센터",
+    "city": "서울",
+    "district": "강북구",
+    "dong": "미아동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 38,
+    "sourceId": "317000001020170002",
+    "name": "금천 24시 K동물의료센터",
+    "city": "서울",
+    "district": "금천구",
+    "dong": "시흥동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:149"
+  },
+  {
+    "rank": 39,
+    "sourceId": "351050001020210001",
+    "name": "24시퍼스트동물의료센터",
+    "city": "인천",
+    "district": "미추홀구",
+    "dong": "주안동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:143"
+  },
+  {
+    "rank": 40,
+    "sourceId": "351000001020030001",
+    "name": "24시 건국 본 동물병원",
+    "city": "인천",
+    "district": "미추홀구",
+    "dong": "주안동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:140"
+  },
+  {
+    "rank": 41,
+    "sourceId": "353000001020180003",
+    "name": "루이스24시동물병원",
+    "city": "인천",
+    "district": "남동구",
+    "dong": "만수동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:140"
+  },
+  {
+    "rank": 42,
+    "sourceId": "353000001020080003",
+    "name": "인천24시유앤미동물병원",
+    "city": "인천",
+    "district": "남동구",
+    "dong": "간석동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:140"
+  },
+  {
+    "rank": 43,
+    "sourceId": "316000001020210001",
+    "name": "24시 신도림S동물의료센터",
+    "city": "서울",
+    "district": "구로구",
+    "dong": "신도림동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:137"
+  },
+  {
+    "rank": 44,
+    "sourceId": "322000001020170006",
+    "name": "24시SNC동물메디컬센터",
+    "city": "서울",
+    "district": "강남구",
+    "dong": "역삼동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:137"
+  },
+  {
+    "rank": 45,
+    "sourceId": "317000001020170001",
+    "name": "24시 글로리 동물병원",
+    "city": "서울",
+    "district": "금천구",
+    "dong": "독산동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:134"
+  },
+  {
+    "rank": 46,
+    "sourceId": "315000001020130001",
+    "name": "24시 안박동물병원",
+    "city": "서울",
+    "district": "강서구",
+    "dong": "등촌동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:134"
+  },
+  {
+    "rank": 47,
+    "sourceId": "307000001020080004",
+    "name": "24시 애니동물병원",
+    "city": "서울",
+    "district": "성북구",
+    "dong": "보문동5가",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:134"
+  },
+  {
+    "rank": 48,
+    "sourceId": "316000001019990002",
+    "name": "24시 지구촌 동물메디컬 센터",
+    "city": "서울",
+    "district": "구로구",
+    "dong": "구로동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:134"
+  },
+  {
+    "rank": 49,
+    "sourceId": "322000001020130003",
+    "name": "24시 청담우리 동물병원",
+    "city": "서울",
+    "district": "강남구",
+    "dong": "삼성동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:134"
+  },
+  {
+    "rank": 50,
+    "sourceId": "324000001020150004",
+    "name": "고덕24시 동물병원",
+    "city": "서울",
+    "district": "강동구",
+    "dong": "명일동",
+    "reason": "seoul-incheon-high-intent",
+    "evidence": "score:134"
+  }
+]
