@@ -113,9 +113,9 @@ const mergedAll = mergeBySourceId(baseRows, naverMap)
   .sort(compareBusinesses);
 
 const merged = mergedAll.filter((row) => row.pageStatus === 'published');
-const areaGroups = buildAreaGroups(merged);
+const areaGroups = strengthenVerifiedAreaGroups(buildAreaGroups(merged));
 const typeGroups = buildTypeGroups(merged);
-const longtailGroups = buildLongtailGroups(merged);
+const longtailGroups = strengthenVerifiedLongtailGroups(buildLongtailGroups(merged));
 
 await mkdir(path.dirname(OUTPUT_FILE), { recursive: true });
 await writeFile(
@@ -349,6 +349,47 @@ function buildAreaGroups(items) {
     }
   }
   return [...groups.values()].map(sortGroupItems).sort((a, b) => a.name.localeCompare(b.name, 'ko'));
+}
+
+function strengthenVerifiedAreaGroups(groups) {
+  const verified = new Map([
+    [
+      '인천-미추홀구-문학동-동물병원',
+      {
+        title: '문학동 동물병원 후기·진료시간·전화번호 비교 | 인천 미추홀구',
+        description: '인천 미추홀구 문학동 동물병원의 공개 후기, 진료시간, 전화번호, 주소와 위치를 방문 전에 비교할 수 있도록 정리했습니다.',
+        intentEvidence: '검색 유입 확인: 문학동 동물병원'
+      }
+    ]
+  ]);
+  return groups.map((group) => {
+    const override = verified.get(group.slug);
+    return override ? { ...group, ...override, verifiedIntent: true } : group;
+  });
+}
+
+function strengthenVerifiedLongtailGroups(groups) {
+  const verified = new Map([
+    [
+      'incheon-exotic-animal-hospital',
+      {
+        title: '인천 특수동물병원 후기, 햄스터·거북이·조류 진료 확인',
+        description: '인천에서 햄스터, 거북이, 조류 등 특수동물 진료 관련 언급이 확인되는 병원을 모아 후기와 위치, 전화번호를 비교했습니다.',
+        intentEvidence: '검색 유입 확인: 인천 특수동물병원',
+        intro: '특수동물 진료는 같은 병원이라도 동물 종류와 담당 진료진, 방문 시간에 따라 가능 여부가 달라질 수 있습니다. 예약 전에 동물 종류, 나이, 증상과 사육 환경을 구체적으로 설명하고 접수 가능 여부를 먼저 확인하세요.'
+      }
+    ]
+  ]);
+  return groups.map((group) => {
+    const override = verified.get(group.slug);
+    if (!override) return group;
+    return {
+      ...group,
+      ...override,
+      verifiedIntent: true,
+      body: [override.intro, ...(group.body || [])]
+    };
+  });
 }
 
 function buildTypeGroups(items) {

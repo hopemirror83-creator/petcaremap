@@ -43,9 +43,10 @@ const faqItems = [
 
 <BaseLayout title={title} description={description}>
   <section class="page-head">
-    <p class="eyebrow">롱테일 묶음</p>
+    <p class="eyebrow">{group.verifiedIntent ? '검증된 검색 의도' : '롱테일 묶음'}</p>
     <h1>{group.title}</h1>
     <p>{description}</p>
+    {group.intentEvidence && <p class="intent-evidence">{group.intentEvidence}</p>}
     <div class="tag-row service-tags">
       <span>{items.length.toLocaleString('ko-KR')}곳 정리</span>
       <span>후기 기반</span>

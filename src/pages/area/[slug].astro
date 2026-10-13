@@ -17,9 +17,10 @@ const description = `${group.description} 후기, 주소, 전화번호, 지도, 
 
 <BaseLayout title={title} description={description}>
   <section class="page-head">
-    <p class="eyebrow">지역 묶음</p>
+    <p class="eyebrow">{group.verifiedIntent ? '검증된 검색 의도' : '지역 묶음'}</p>
     <h1>{group.title}</h1>
     <p>{description}</p>
+    {group.intentEvidence && <p class="intent-evidence">{group.intentEvidence}</p>}
   </section>
 
   <AdSlot position="top" />

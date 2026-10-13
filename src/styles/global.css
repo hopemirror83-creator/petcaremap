@@ -143,6 +143,17 @@ h2 {
   font-size: 18px;
 }
 
+.page-head .intent-evidence {
+  width: fit-content;
+  margin: 18px 0 0;
+  padding: 7px 10px;
+  border-left: 3px solid var(--accent);
+  background: var(--soft);
+  color: var(--accent-ink);
+  font-size: 14px;
+  font-weight: 800;
+}
+
 .search-panel {
   position: relative;
   max-width: 860px;
