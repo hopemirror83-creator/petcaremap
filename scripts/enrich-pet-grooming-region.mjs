@@ -560,6 +560,12 @@ function sentence(value, kind = 'good') {
   if (/친절함$/.test(text)) return `${text.replace(/친절함$/, '친절하다는')} 후기가 있습니다.`;
   if (/쾌적함$/.test(text)) return `${text.replace(/쾌적함$/, '쾌적하다는')} 후기가 있습니다.`;
   if (/편리함$/.test(text)) return `${text.replace(/편리함$/, '편리하다는')} 후기가 있습니다.`;
+  if (/이용 가능함$/.test(text)) return `${text.replace(/이용 가능함$/, '이용할 수 있다는')} 후기가 있습니다.`;
+  if (/가능함$/.test(text)) return `${text.replace(/가능함$/, '가능하다는')} 안내가 있습니다.`;
+  if (/높음$/.test(text)) return `${text.replace(/높음$/, '높다는')} 후기가 있습니다.`;
+  if (/받음$/.test(text)) return `${text.replace(/받음$/, '받는다는')} 후기가 있습니다.`;
+  if (/함$/.test(text)) return `${text.replace(/함$/, '한다는 점이')} 후기에서 좋게 언급됩니다.`;
+  if (/후기 다수$/.test(text)) return `${text.replace(/후기 다수$/, '후기가 여러 건')} 확인됩니다.`;
   if (/만족도$/.test(text)) return `${text}가 높다는 후기가 있습니다.`;
   if (/전문성$/.test(text)) return `${text}을 좋게 평가한 후기가 있습니다.`;
   if (/어려움$/.test(text)) return `${text.replace(/어려움$/, '어려워')} 방문 전 확인이 필요합니다.`;
