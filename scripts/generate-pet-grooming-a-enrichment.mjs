@@ -148,7 +148,8 @@ function scoreRef(item, ref) {
 }
 
 async function generateDraft(token, item, sourceRefs) {
-  const url = `https://${location}-aiplatform.googleapis.com/v1/projects/${projectId}/locations/${location}/publishers/google/models/${model}:generateContent`;
+  const vertexHost = location === 'global' ? 'aiplatform.googleapis.com' : `${location}-aiplatform.googleapis.com`;
+  const url = `https://${vertexHost}/v1/projects/${projectId}/locations/${location}/publishers/google/models/${model}:generateContent`;
   const prompt = buildVertexPrompt(item, sourceRefs);
   const response = await fetch(url, {
     method: 'POST',

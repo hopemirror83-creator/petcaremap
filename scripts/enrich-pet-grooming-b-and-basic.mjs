@@ -177,7 +177,8 @@ function isRelevant(ref, row, candidate) {
 }
 
 async function generateVertexDraft(tokenValue, row, candidate, sourceRefs) {
-  const url = `https://${location}-aiplatform.googleapis.com/v1/projects/${projectId}/locations/${location}/publishers/google/models/${model}:generateContent`;
+  const vertexHost = location === 'global' ? 'aiplatform.googleapis.com' : `${location}-aiplatform.googleapis.com`;
+  const url = `https://${vertexHost}/v1/projects/${projectId}/locations/${location}/publishers/google/models/${model}:generateContent`;
   const prompt = buildPrompt(row, candidate, sourceRefs);
   for (let attempt = 0; attempt < 3; attempt += 1) {
     const response = await fetch(url, {

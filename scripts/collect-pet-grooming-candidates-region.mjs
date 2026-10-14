@@ -79,7 +79,8 @@ async function collectRefs(row) {
         const ref = normalizeItem(item, type, query);
         const score = scoreRef(row, ref);
         if (score < 25) continue;
-        const key = `${ref.sourceType}:${ref.link || ref.title}`;
+        if (!isRelevantRef(row, ref)) continue;
+        const key = `${ref.sourceType}:${ref.link || normalize(`${ref.title} ${ref.summary}`)}`;
         if (seen.has(key)) continue;
         seen.add(key);
         refs.push({ ...ref, score });
@@ -100,15 +101,34 @@ async function safeSearch(type, query, display) {
 }
 
 function normalizeItem(item, type, query) {
+  const localSummary = [item.category, item.roadAddress, item.address].filter(Boolean).join(' ');
   return {
     title: cleanText(item.title),
-    summary: cleanText(item.description || item.category || item.roadAddress || item.address || ''),
+    summary: cleanText(type === 'local' ? localSummary : item.description || ''),
     link: item.link || '',
     sourceType: type === 'cafearticle' ? 'cafe' : type === 'local' ? 'naver_place' : 'blog',
     bloggerName: cleanText(item.bloggername || item.cafename || item.category || ''),
     postDate: item.postdate || '',
     query
   };
+}
+
+function isRelevantRef(row, ref) {
+  const name = normalize(row.displayName || row.name);
+  const text = normalize(`${ref.title} ${ref.summary} ${ref.bloggerName}`);
+  const title = normalize(ref.title);
+  const city = normalize(row.city || '');
+  const district = normalize(row.district || '');
+  const dong = normalize(row.dong || '');
+  const hasExactName = Boolean(name && text.includes(name));
+  const hasLocality = [city, district, dong].filter((value) => value.length >= 2).some((value) => text.includes(value));
+  const hasPetContext = /애견|강아지|고양이|반려|미용|그루밍|목욕|스파|펫살롱|펫샵|가위컷|무마취|동물병원|애견호텔|애견유치원/.test(`${ref.title} ${ref.summary}`);
+
+  if (!hasExactName) return false;
+  if (/매도|매물번호|무권리|구인|채용|알바|분양문의/.test(`${ref.title} ${ref.summary}`)) return false;
+  if (ref.sourceType === 'naver_place') return title === name && hasLocality;
+  if (name.length <= 5) return hasLocality && hasPetContext;
+  return hasPetContext && (hasLocality || name.length >= 6);
 }
 
 function scoreRef(row, ref) {

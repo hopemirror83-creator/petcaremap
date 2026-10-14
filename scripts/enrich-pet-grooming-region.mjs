@@ -100,7 +100,8 @@ const summary = [...enrichmentMap.values()]
 console.log(JSON.stringify({ district, candidates: targetCandidates.length, generated: summary }, null, 2));
 
 async function generateDraft(getToken, refreshToken, row, candidate) {
-  const url = `https://${location}-aiplatform.googleapis.com/v1/projects/${projectId}/locations/${location}/publishers/google/models/${model}:generateContent`;
+  const vertexHost = location === 'global' ? 'aiplatform.googleapis.com' : `${location}-aiplatform.googleapis.com`;
+  const url = `https://${vertexHost}/v1/projects/${projectId}/locations/${location}/publishers/google/models/${model}:generateContent`;
   const prompt = buildPrompt(row, candidate);
   for (let attempt = 0; attempt < 4; attempt += 1) {
     let response;
@@ -281,7 +282,7 @@ function buildPrompt(row, candidate) {
 function buildVertexEnrichment(row, candidate, draftRow) {
   const name = row.displayName || row.name;
   const area = areaLabel(row);
-  const refs = draftRow.sourceRefs || candidate.sourceRefs || [];
+  const refs = (draftRow.sourceRefs || candidate.sourceRefs || []).filter(isUsefulSourceRef);
   const draft = draftRow.vertexDraft || {};
   const counts = countSources(refs);
   const body = cleanLongText(draft.body || draft.summary || '');
@@ -382,32 +383,35 @@ function buildBasicEnrichment(row, candidate) {
 function buildArticleSections(row, draft, refs) {
   const name = row.displayName || row.name;
   const bodySections = parseSections(draft.body || '');
+  const summary = isGroomingRelevant(draft.summary)
+    ? cleanLongText(draft.summary)
+    : `${name}의 공개 후기와 업체 기본정보를 바탕으로 미용 서비스, 반려동물 응대, 방문 전 확인사항을 정리했습니다.`;
   return [
     {
       heading: '공개된 후기와 업체 기본정보',
-      body: cleanLongText(draft.summary || firstSection(bodySections) || `${name} 관련 공개 후기와 업체 기본정보를 함께 정리했습니다.`)
+      body: summary || cleanLongText(firstSection(bodySections) || `${name} 관련 공개 후기와 업체 기본정보를 함께 정리했습니다.`)
     },
     {
       heading: '공개 후기에서 좋게 언급된 점',
-      body: listToParagraph(draft.goodPoints) || findSection(bodySections, /좋|장점|만족|후기|케어|미용/) || `${name} 관련 후기에서는 미용 결과, 상담 방식, 반려동물 응대와 관련된 내용이 주로 확인됩니다.`
+      body: listToParagraph(draft.goodPoints, { groomingOnly: true, kind: 'good' }) || `${name} 관련 후기에서는 미용 결과, 상담 방식, 반려동물 응대와 관련된 내용을 살펴볼 수 있습니다.`
     },
     {
       heading: '아쉬운 점이나 확인이 필요한 부분',
-      body: listToParagraph(draft.checkPoints) || findSection(bodySections, /아쉬|확인|주의|비용|예약/) || '예약 방식, 비용, 견종별 가능 범위는 업체마다 달라 방문 전 확인이 필요합니다.'
+      body: listToParagraph(draft.checkPoints, { groomingOnly: true, kind: 'check' }) || '예약 방식, 비용, 견종별 가능 범위는 업체마다 달라 방문 전 확인이 필요합니다.'
     },
     {
       heading: '방문 전 참고하면 좋은 정보',
-      body: listToParagraph(draft.visitTips) || findSection(bodySections, /방문|준비|참고|예약/) || '원하는 스타일 사진, 최근 미용 시점, 털 엉킴 정도, 피부 예민함을 미리 정리하면 상담이 더 구체적입니다.'
+      body: listToParagraph(draft.visitTips, { groomingOnly: true, kind: 'visit' }) || '원하는 스타일 사진, 최근 미용 시점, 털 엉킴 정도, 피부 예민함을 미리 정리하면 상담이 더 구체적입니다.'
     },
     {
       heading: '이 업체를 비교할 때 볼 만한 기준',
-      body: listToParagraph(draft.comparePoints) || findSection(bodySections, /비교|기준/) || `${row.dong || '주변'} 애견미용 업체와 비교할 때는 미용 사진, 예약 간격, 목욕 포함 여부, 정차 가능성을 함께 보면 좋습니다.`
+      body: listToParagraph(draft.comparePoints, { groomingOnly: true, kind: 'compare' }) || `${row.dong || '주변'} 애견미용 업체와 비교할 때는 미용 사진, 예약 간격, 목욕 포함 여부, 정차 가능성을 함께 보면 좋습니다.`
     }
   ].map((section) => ({ ...section, body: cleanLongText(section.body) })).filter((section) => section.body);
 }
 
 function buildReviewCards(draft, refs) {
-  const points = normalizeArray(draft.goodPoints);
+  const points = normalizeArray(draft.goodPoints).filter(isGroomingRelevant);
   const labels = ['맞춤 케어', '미용 스타일', '상담/응대', '예약 정보'];
   return labels.map((label, index) => ({
     label,
@@ -533,14 +537,57 @@ function normalizeFaq(value) {
     .filter((item) => item.question && item.answer);
 }
 
-function listToParagraph(value) {
-  return normalizeArray(value).map(sentence).join('\n\n');
+function listToParagraph(value, options = {}) {
+  const points = normalizeArray(value)
+    .filter((item) => !options.groomingOnly || isGroomingRelevant(item));
+  return points.map((item) => sentence(item, options.kind)).join('\n\n');
 }
 
-function sentence(value) {
-  const text = cleanLongText(value);
+function sentence(value, kind = 'good') {
+  let text = cleanLongText(value)
+    .replace(/라는 내용이 언급됩니다\.?$/g, '')
+    .replace(/확인 필요$/g, '확인이 필요합니다')
+    .replace(/확인 권장$/g, '확인하는 편이 좋습니다')
+    .replace(/방문 전 예약 권장$/g, '방문 전에 예약하는 편이 좋습니다')
+    .trim();
   if (!text) return '';
-  return /[.!?。]$/.test(text) || /[다요음함됨됨니다습니다]$/.test(text) ? text : `${text}라는 내용이 언급됩니다.`;
+  if (/[.!?。]$/.test(text)) return text;
+  if (/(?:다|요|니다|습니다)$/.test(text)) return `${text}.`;
+  if (/서비스\s*제공$/.test(text)) return `${text.replace(/서비스\s*제공$/, '서비스를 제공한다는')} 후기가 있습니다.`;
+  if (/제공$/.test(text)) return `${text.replace(/제공$/, '제공한다는')} 후기가 있습니다.`;
+  if (/가능$/.test(text)) return `${text}하다는 안내가 있습니다.`;
+  if (/필요$/.test(text)) return `${text}합니다.`;
+  if (/친절함$/.test(text)) return `${text.replace(/친절함$/, '친절하다는')} 후기가 있습니다.`;
+  if (/쾌적함$/.test(text)) return `${text.replace(/쾌적함$/, '쾌적하다는')} 후기가 있습니다.`;
+  if (/편리함$/.test(text)) return `${text.replace(/편리함$/, '편리하다는')} 후기가 있습니다.`;
+  if (/만족도$/.test(text)) return `${text}가 높다는 후기가 있습니다.`;
+  if (/전문성$/.test(text)) return `${text}을 좋게 평가한 후기가 있습니다.`;
+  if (/어려움$/.test(text)) return `${text.replace(/어려움$/, '어려워')} 방문 전 확인이 필요합니다.`;
+  if (/수 있음$/.test(text)) return `${text.replace(/수 있음$/, '수 있으므로')} 방문 전에 직접 확인하는 편이 좋습니다.`;
+  if (/확인$/.test(text)) return `${text}${josa(text, '이', '가')} 필요합니다.`;
+  if (kind === 'check') return `${text}${josa(text, '은', '는')} 방문 전에 확인할 부분입니다.`;
+  if (kind === 'visit') return `${text}${josa(text, '이', '가')} 방문 준비에 도움이 됩니다.`;
+  if (kind === 'compare') return `${text}${josa(text, '이', '가')} 업체를 비교할 때 기준이 될 수 있습니다.`;
+  return `${text}${josa(text, '이', '가')} 후기에서 좋게 언급됩니다.`;
+}
+
+function josa(value, withBatchim, withoutBatchim) {
+  const last = String(value || '').trim().slice(-1);
+  const code = last.charCodeAt(0) - 0xac00;
+  if (code < 0 || code > 11171) return withoutBatchim;
+  return code % 28 ? withBatchim : withoutBatchim;
+}
+
+function isGroomingRelevant(value) {
+  const text = cleanLongText(value);
+  if (!text) return false;
+  const offTopic = /파보|장염|질병|수술|중성화|유기견|입원|응급|치료|예방접종|정기검진|특수동물|진료|진료비|진료 기록|건강 상태|의료진|수의사|분양/;
+  return !offTopic.test(text);
+}
+
+function isUsefulSourceRef(ref) {
+  const text = cleanLongText(`${ref?.title || ''} ${ref?.summary || ''}`);
+  return !/부동산|아파트|오피스텔|매매|임대|채용|구인|구직|알바|분양|자동차|맛집/.test(text);
 }
 
 function cleanLongText(value) {
