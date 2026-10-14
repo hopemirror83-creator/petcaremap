@@ -383,7 +383,7 @@ function buildBasicEnrichment(row, candidate) {
 function buildArticleSections(row, draft, refs) {
   const name = row.displayName || row.name;
   const bodySections = parseSections(draft.body || '');
-  const summary = isGroomingRelevant(draft.summary)
+  const summary = isUsableSummary(draft.summary, name)
     ? cleanLongText(draft.summary)
     : `${name}의 공개 후기와 업체 기본정보를 바탕으로 미용 서비스, 반려동물 응대, 방문 전 확인사항을 정리했습니다.`;
   return [
@@ -581,8 +581,15 @@ function josa(value, withBatchim, withoutBatchim) {
 function isGroomingRelevant(value) {
   const text = cleanLongText(value);
   if (!text) return false;
-  const offTopic = /파보|장염|질병|수술|중성화|유기견|입원|응급|치료|예방접종|정기검진|특수동물|진료|진료비|진료 기록|건강 상태|의료진|수의사|분양/;
+  const offTopic = /파보|장염|질병|수술|중성화|유기견|입원|응급|치료|예방접종|정기검진|특수\s*동물|노령\s*동물|진료|진단|진료비|진료 기록|건강 상태|의료진|수의사|분양|결제 내역|방문 내역|특정 보호자|반려동물의 이름/;
   return !offTopic.test(text);
+}
+
+function isUsableSummary(value, name) {
+  const text = cleanLongText(value);
+  if (!isGroomingRelevant(text)) return false;
+  if (/병원|의료원|의료센터/.test(name) && !/미용|그루밍|목욕|컷|털 관리/.test(text)) return false;
+  return true;
 }
 
 function isUsefulSourceRef(ref) {
