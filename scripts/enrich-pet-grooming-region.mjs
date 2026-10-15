@@ -560,6 +560,7 @@ function sentence(value, kind = 'good') {
   if (/필요$/.test(text)) return `${text}합니다.`;
   if (/친절함$/.test(text)) return `${text.replace(/친절함$/, '친절하다는')} 후기가 있습니다.`;
   if (/세심함$/.test(text)) return `${text.replace(/세심함$/, '세심하다는')} 후기가 있습니다.`;
+  if (/섬세함$/.test(text)) return `${text.replace(/섬세함$/, '섬세하다는')} 후기가 있습니다.`;
   if (/쾌적함$/.test(text)) return `${text.replace(/쾌적함$/, '쾌적하다는')} 후기가 있습니다.`;
   if (/편리함$/.test(text)) return `${text.replace(/편리함$/, '편리하다는')} 후기가 있습니다.`;
   if (/이용 가능함$/.test(text)) return `${text.replace(/이용 가능함$/, '이용할 수 있다는')} 후기가 있습니다.`;
