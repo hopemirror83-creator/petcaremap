@@ -553,6 +553,7 @@ function sentence(value, kind = 'good') {
     .trim();
   if (!text) return '';
   if (/[.!?。]$/.test(text)) return text;
+  if (/습니다\.\s*\([^)]+\)$/.test(text)) return `${text}.`;
   if (/(?:다|요|니다|습니다)$/.test(text)) return `${text}.`;
   if (/서비스\s*제공$/.test(text)) return `${text.replace(/서비스\s*제공$/, '서비스를 제공한다는')} 후기가 있습니다.`;
   if (/제공$/.test(text)) return `${text.replace(/제공$/, '제공한다는')} 후기가 있습니다.`;
@@ -566,10 +567,12 @@ function sentence(value, kind = 'good') {
   if (/이용 가능함$/.test(text)) return `${text.replace(/이용 가능함$/, '이용할 수 있다는')} 후기가 있습니다.`;
   if (/가능함$/.test(text)) return `${text.replace(/가능함$/, '가능하다는')} 안내가 있습니다.`;
   if (/높음$/.test(text)) return `${text.replace(/높음$/, '높다는')} 후기가 있습니다.`;
+  if (/좋음$/.test(text)) return `${text.replace(/좋음$/, '좋다는')} 안내가 있습니다.`;
   if (/받음$/.test(text)) return `${text.replace(/받음$/, '받는다는')} 후기가 있습니다.`;
   if (/갖춤$/.test(text)) return `${text.replace(/갖춤$/, '갖추었다는')} 후기가 있습니다.`;
   if (/진행$/.test(text)) return `${text.replace(/진행$/, '진행된다는')} 후기가 있습니다.`;
   if (/예약 필수$/.test(text)) return `${text.replace(/예약 필수$/, '예약이 필수라는 점이')} 방문 준비에 도움이 됩니다.`;
+  if (/사전 예약 권장$/.test(text)) return `${text.replace(/사전 예약 권장$/, '사전에 예약하는 편이 좋다는 점이')} 방문 준비에 도움이 됩니다.`;
   if (/함$/.test(text)) return `${text.replace(/함$/, '한다는 점이')} 후기에서 좋게 언급됩니다.`;
   if (/후기 다수$/.test(text)) return `${text.replace(/후기 다수$/, '후기가 여러 건')} 확인됩니다.`;
   if (/만족도$/.test(text)) return `${text}가 높다는 후기가 있습니다.`;
