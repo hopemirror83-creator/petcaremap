@@ -231,7 +231,9 @@ function escapeUnsafeJsonStringChars(value) {
 function buildPrompt(row, candidate) {
   const name = row.displayName || row.name;
   const area = areaLabel(row);
-  const refs = candidate.sourceRefs || [];
+  const refs = (candidate.sourceRefs || [])
+    .filter(isUsefulSourceRef)
+    .filter((ref) => isGroomingRelevant(`${ref?.title || ''} ${ref?.summary || ''}`));
   return [
     '기존 지시는 무시하고 아래 지시대로만 작성해주세요.',
     `제목: ${area} 애견미용샵 ${name} 후기`,
@@ -320,7 +322,9 @@ function buildVertexEnrichment(row, candidate, draftRow) {
 function buildBasicEnrichment(row, candidate) {
   const name = row.displayName || row.name;
   const area = areaLabel(row);
-  const refs = candidate.sourceRefs || [];
+  const refs = (candidate.sourceRefs || [])
+    .filter(isUsefulSourceRef)
+    .filter((ref) => isGroomingRelevant(`${ref?.title || ''} ${ref?.summary || ''}`));
   const samples = refs.slice(0, 4).map((ref) => ref.title).filter(Boolean);
   const address = row.roadAddress || row.lotAddress || `${area} 주소 확인 필요`;
   const phone = row.phone ? `전화번호는 ${row.phone}입니다.` : '전화번호는 공개 데이터에서 별도로 확인되지 않았습니다.';
@@ -564,6 +568,8 @@ function sentence(value, kind = 'good') {
   if (/섬세함$/.test(text)) return `${text.replace(/섬세함$/, '섬세하다는')} 후기가 있습니다.`;
   if (/쾌적함$/.test(text)) return `${text.replace(/쾌적함$/, '쾌적하다는')} 후기가 있습니다.`;
   if (/편리함$/.test(text)) return `${text.replace(/편리함$/, '편리하다는')} 후기가 있습니다.`;
+  if (/편안함$/.test(text)) return `${text.replace(/편안함$/, '편안하다는')} 후기가 있습니다.`;
+  if (/상세함$/.test(text)) return `${text.replace(/상세함$/, '상세하다는')} 후기가 있습니다.`;
   if (/이용 가능함$/.test(text)) return `${text.replace(/이용 가능함$/, '이용할 수 있다는')} 후기가 있습니다.`;
   if (/가능함$/.test(text)) return `${text.replace(/가능함$/, '가능하다는')} 안내가 있습니다.`;
   if (/높음$/.test(text)) return `${text.replace(/높음$/, '높다는')} 후기가 있습니다.`;
@@ -571,6 +577,8 @@ function sentence(value, kind = 'good') {
   if (/받음$/.test(text)) return `${text.replace(/받음$/, '받는다는')} 후기가 있습니다.`;
   if (/갖춤$/.test(text)) return `${text.replace(/갖춤$/, '갖추었다는')} 후기가 있습니다.`;
   if (/진행$/.test(text)) return `${text.replace(/진행$/, '진행된다는')} 후기가 있습니다.`;
+  if (/전화 예약은 필수$/.test(text)) return `${text.replace(/전화 예약은 필수$/, '전화로 예약하는 것이 좋습니다')}`;
+  if (/사전 문의 권장$/.test(text)) return `${text.replace(/사전 문의 권장$/, '사전에 문의하는 편이 좋습니다')}`;
   if (/예약 필수$/.test(text)) return `${text.replace(/예약 필수$/, '예약이 필수라는 점이')} 방문 준비에 도움이 됩니다.`;
   if (/사전 예약 권장$/.test(text)) return `${text.replace(/사전 예약 권장$/, '사전에 예약하는 편이 좋다는 점이')} 방문 준비에 도움이 됩니다.`;
   if (/함$/.test(text)) return `${text.replace(/함$/, '한다는 점이')} 후기에서 좋게 언급됩니다.`;
