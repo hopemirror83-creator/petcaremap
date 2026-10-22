@@ -125,12 +125,12 @@ function isRelevantRef(row, ref) {
   const hasLocality = localKeys.length
     ? localKeys.some((value) => text.includes(value))
     : Boolean(city && text.includes(city));
-  const hasPetContext = /애견|강아지|고양이|반려|미용|그루밍|목욕|스파|펫살롱|펫샵|가위컷|무마취|동물병원|애견호텔|애견유치원/.test(`${ref.title} ${ref.summary}`);
+  const hasGroomingContext = /미용|그루밍|목욕|스파|펫살롱|가위컷|무마취|위생미용/.test(`${ref.title} ${ref.summary}`);
 
   if (!hasExactName) return false;
   if (/매도|매물번호|무권리|구인|채용|알바|분양문의/.test(`${ref.title} ${ref.summary}`)) return false;
   if (ref.sourceType === 'naver_place') return title === name && hasLocality;
-  return hasLocality && hasPetContext;
+  return hasLocality && hasGroomingContext;
 }
 
 function scoreRef(row, ref) {

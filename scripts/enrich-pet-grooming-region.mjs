@@ -295,7 +295,7 @@ function buildVertexEnrichment(row, candidate, draftRow) {
     sourceId: row.sourceId,
     title: `${area} 애견미용샵 ${name} 후기 모음`,
     metaDescription: `${area} ${name}의 위치, 애견미용 후기, 네이버 지도, 예약 전 확인사항과 주변 업체 비교 기준을 정리했습니다.`,
-    oneLineSummary: draft.summary || `${area} 애견미용샵 ${name}의 공개 후기와 기본정보를 바탕으로 미용 스타일, 응대 방식, 방문 전 확인사항을 정리했습니다.`,
+    oneLineSummary: cleanLongText(draft.summary) || `${area} 애견미용샵 ${name}의 공개 후기와 기본정보를 바탕으로 미용 스타일, 응대 방식, 방문 전 확인사항을 정리했습니다.`,
     reviewCoverageLabel: refs.length >= 6 ? '후기 자료 풍부' : '후기 일부 확인',
     reviewSection,
     articleSections: buildArticleSections(row, draft, refs),
@@ -560,6 +560,8 @@ function sentence(value, kind = 'good') {
   if (/습니다\.\s*\([^)]+\)$/.test(text)) return `${text}.`;
   if (/(?:다|요|니다|습니다)$/.test(text)) return `${text}.`;
   if (/서비스\s*제공$/.test(text)) return `${text.replace(/서비스\s*제공$/, '서비스를 제공한다는')} 후기가 있습니다.`;
+  if (/기술력 보유$/.test(text)) return `${text.replace(/기술력 보유$/, '기술력을 갖췄다는')} 후기가 있습니다.`;
+  if (/케어 진행$/.test(text)) return `${text.replace(/케어 진행$/, '케어를 진행한다는')} 후기가 있습니다.`;
   if (/제공$/.test(text)) return `${text.replace(/제공$/, '제공한다는')} 후기가 있습니다.`;
   if (/가능$/.test(text)) return `${text}하다는 안내가 있습니다.`;
   if (/필요$/.test(text)) return `${text}합니다.`;
@@ -579,8 +581,10 @@ function sentence(value, kind = 'good') {
   if (/진행$/.test(text)) return `${text.replace(/진행$/, '진행된다는')} 후기가 있습니다.`;
   if (/전화 예약은 필수$/.test(text)) return `${text.replace(/전화 예약은 필수$/, '전화로 예약하는 것이 좋습니다')}`;
   if (/사전 문의 권장$/.test(text)) return `${text.replace(/사전 문의 권장$/, '사전에 문의하는 편이 좋습니다')}`;
-  if (/예약 필수$/.test(text)) return `${text.replace(/예약 필수$/, '예약이 필수라는 점이')} 방문 준비에 도움이 됩니다.`;
+  if (/예약 필수$/.test(text)) return `${text.replace(/예약 필수$/, '예약하는 것이 좋습니다')}`;
   if (/사전 예약 권장$/.test(text)) return `${text.replace(/사전 예약 권장$/, '사전에 예약하는 편이 좋다는 점이')} 방문 준비에 도움이 됩니다.`;
+  if (/상담 추천$/.test(text)) return `${text.replace(/상담 추천$/, '상담해보는 것이 좋습니다')}`;
+  if (/확인해야 함$/.test(text)) return `${text.replace(/확인해야 함$/, '확인해야 합니다')}`;
   if (/함$/.test(text)) return `${text.replace(/함$/, '한다는 점이')} 후기에서 좋게 언급됩니다.`;
   if (/후기 다수$/.test(text)) return `${text.replace(/후기 다수$/, '후기가 여러 건')} 확인됩니다.`;
   if (/만족도$/.test(text)) return `${text}가 높다는 후기가 있습니다.`;
@@ -627,6 +631,11 @@ function cleanLongText(value) {
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
+    .replace(/최상(?:의)?\s+미용\s+서비스/g, '미용 서비스')
+    .replace(/최고(?:의)?\s+미용\s+서비스/g, '미용 서비스')
+    .replace(/최상의\s*(선택|서비스|환경)/g, '좋은 $1')
+    .replace(/최고의\s*(선택|서비스|환경)/g, '좋은 $1')
+    .replace(/기술력을\s*자랑합니다/g, '기술력을 갖춘 것으로 소개됩니다')
     .replace(/(?:^|\s)#{1,4}\s+/g, '\n\n')
     .replace(/\*\*/g, '')
     .replace(/\s+\n/g, '\n')
