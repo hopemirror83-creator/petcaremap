@@ -16,7 +16,7 @@ const ENRICHMENT_DIR = path.join(ROOT, 'data', 'pet-service-enrichment');
 
 const credentialsPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 const location = process.env.VERTEX_LOCATION || 'us-central1';
-const model = process.env.VERTEX_MODEL || process.env.VERTEX_GEMINI_MODEL || 'gemini-2.5-flash-lite';
+const model = process.env.VERTEX_MODEL || process.env.VERTEX_GEMINI_MODEL || 'gemini-2.5-flash';
 const delayMs = Number(process.env.PET_GROOMING_REGION_VERTEX_DELAY_MS || '9000');
 const retryDelayMs = Number(process.env.PET_GROOMING_REGION_VERTEX_RETRY_MS || '70000');
 const requestTimeoutMs = Number(process.env.GEMINI_REQUEST_TIMEOUT_MS || '120000');
@@ -333,9 +333,9 @@ function buildBasicEnrichment(row, candidate) {
     ? `검색 후보에서는 ${joinList(samples)} 같은 문구가 함께 확인됩니다. 다만 이 자료만으로 실제 이용 후기를 단정하기는 어려워, 기본정보와 방문 전 확인 기준을 중심으로 정리했습니다.`
     : '현재 공개 검색에서 이 업체를 직접 이용한 후기는 많이 확인되지 않습니다. 그래서 위치, 영업상태, 예약 전 확인할 항목처럼 방문 판단에 필요한 기본정보를 중심으로 정리했습니다.';
   const reviewSection = [
-    `${area} 애견미용샵 ${name}은 공공데이터 기준 ${status} 확인되는 반려동물 미용 업체입니다. 주소는 ${address}이며, ${phone}`,
+    `${area} 애견미용샵 ${name}${josa(name, '은', '는')} 공공데이터 기준 ${status} 확인되는 반려동물 미용 업체입니다. 주소는 ${address}이며, ${phone}`,
     sampleText,
-    `애견미용은 같은 견종이라도 털 엉킴, 피부 상태, 원하는 컷, 목욕 포함 여부에 따라 소요 시간과 비용이 달라질 수 있습니다. ${name}을 처음 이용한다면 원하는 스타일 사진과 최근 미용 시점, 아이가 싫어하는 부위, 피부나 귀 상태를 미리 정리해 상담하는 편이 좋습니다.`
+    `애견미용은 같은 견종이라도 털 엉킴, 피부 상태, 원하는 컷, 목욕 포함 여부에 따라 소요 시간과 비용이 달라질 수 있습니다. ${name}${josa(name, '을', '를')} 처음 이용한다면 원하는 스타일 사진과 최근 미용 시점, 아이가 싫어하는 부위, 피부나 귀 상태를 미리 정리해 상담하는 편이 좋습니다.`
   ].join('\n\n');
 
   return {
