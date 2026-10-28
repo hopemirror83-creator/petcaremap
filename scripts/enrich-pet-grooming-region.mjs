@@ -288,7 +288,7 @@ function buildVertexEnrichment(row, candidate, draftRow) {
   const draft = draftRow.vertexDraft || {};
   const counts = countSources(refs);
   const body = cleanLongText(draft.body || draft.summary || '');
-  const opening = `${area} 애견미용샵 ${name}은 공개된 후기와 업체 기본정보를 함께 참고해 정리했습니다. ${sourceSummary(counts, refs.length)} 확인됩니다.`;
+  const opening = `${area} 애견미용샵 ${name}${josa(name, '은', '는')} 공개된 후기와 업체 기본정보를 함께 참고해 정리했습니다. ${sourceSummary(counts, refs.length)} 확인됩니다.`;
   const reviewSection = [opening, body].filter(Boolean).join('\n\n');
 
   return {
@@ -296,7 +296,7 @@ function buildVertexEnrichment(row, candidate, draftRow) {
     title: `${area} 애견미용샵 ${name} 후기 모음`,
     metaDescription: `${area} ${name}의 위치, 애견미용 후기, 네이버 지도, 예약 전 확인사항과 주변 업체 비교 기준을 정리했습니다.`,
     oneLineSummary: cleanLongText(draft.summary) || `${area} 애견미용샵 ${name}의 공개 후기와 기본정보를 바탕으로 미용 스타일, 응대 방식, 방문 전 확인사항을 정리했습니다.`,
-    reviewCoverageLabel: refs.length >= 6 ? '후기 자료 풍부' : '후기 일부 확인',
+    reviewCoverageLabel: refs.length >= 6 ? '여러 공개 후기 확인' : '일부 공개 후기 확인',
     reviewSection,
     articleSections: buildArticleSections(row, draft, refs),
     reviewAnalysisCards: buildReviewCards(draft, refs),
@@ -304,7 +304,7 @@ function buildVertexEnrichment(row, candidate, draftRow) {
     decisionGuide: buildDecisionGuide(row),
     faqItems: buildFaq(row, draft),
     reviewSourceSummary: {
-      coverageLabel: refs.length >= 6 ? '후기 자료 풍부' : '후기 일부 확인',
+      coverageLabel: refs.length >= 6 ? '여러 공개 후기 확인' : '일부 공개 후기 확인',
       naverMapReviewCount: 0,
       blogCount: counts.blog,
       cafeCount: counts.cafe,
@@ -462,8 +462,8 @@ function buildFaq(row, draft) {
   if (draftFaq.length >= 2) return draftFaq.slice(0, 4);
   return [
     {
-      question: `${name}은 어디에 있나요?`,
-      answer: `${name}은 ${areaLabel(row)}에 있으며, 주소는 ${row.roadAddress || row.lotAddress || '공개 데이터 기준 주소 확인 필요'}입니다.`
+      question: `${name}${josa(name, '은', '는')} 어디에 있나요?`,
+      answer: `${name}${josa(name, '은', '는')} ${areaLabel(row)}에 있으며, 주소는 ${row.roadAddress || row.lotAddress || '공개 데이터 기준 주소 확인 필요'}입니다.`
     },
     {
       question: `${name} 방문 전 무엇을 확인하면 좋나요?`,
@@ -640,12 +640,33 @@ function cleanLongText(value) {
     .replace(/최고(?:의)?\s+미용\s+서비스/g, '미용 서비스')
     .replace(/최상의\s*(선택|서비스|환경)/g, '좋은 $1')
     .replace(/최고의\s*(선택|서비스|환경)/g, '좋은 $1')
+    .replace(/최고급\s*/g, '')
+    .replace(/최상(?:의)?\s*(경험|결과|기술력|만족)/g, '좋은 $1')
+    .replace(/최고(?:의)?\s*(경험|결과|기술력|만족)/g, '좋은 $1')
+    .replace(/최상(?:의)?/g, '좋은')
+    .replace(/최고(?:의)?/g, '좋은')
+    .replace(/무조건\s*추천(?:합니다|해요)?/g, '긍정적으로 언급됩니다')
+    .replace(/강력(?:히)?\s*추천(?:합니다|해요)?/g, '추천하는 후기가 있습니다')
     .replace(/기술력을\s*자랑합니다/g, '기술력을 갖춘 것으로 소개됩니다')
     .replace(/높은\s*만족도를\s*자랑합니다/g, '만족도가 높다는 후기가 있습니다')
+    .replace(/(?:다양한|전문적인|뛰어난)\s*서비스를\s*자랑합니다/g, '여러 서비스가 안내되어 있습니다')
+    .replace(/자랑하는\s*/g, '갖춘 ')
+    .replace(/접근성을\s*자랑하며/g, '접근성이 좋다는 후기가 있으며')
+    .replace(/의\s*자랑\s*중\s*하나는/g, '의 특징 중 하나는')
+    .replace(/자랑(?:합니다|하고 있습니다|한다|하는 곳입니다)/g, '특징으로 소개됩니다')
     .replace(/입소문이\s*자자한/g, '후기에서 자주 언급되는')
+    .replace(/입소문을\s*타고\s*/g, '후기에서 ')
+    .replace(/입소문난\s*/g, '후기에서 언급되는 ')
+    .replace(/입소문/g, '후기 언급')
     .replace(/뛰어난\s*실력/g, '미용 실력')
+    .replace(/(?:안녕하세요[.!]?\s*)?(?:오늘은|이번에는)\s*/g, '')
+    .replace(/["“”']다음\s*미용도\s*무조건\s*([^"“”']+)["“”']/g, '다음 미용도 같은 업체를 이용하겠다는 후기')
+    .replace(/많은\s*보호자들에게\s*사랑받고\s*있습니다/g, '여러 보호자가 이용한 후기가 있습니다')
     .replace(/010\s*[-–—]*\s*[-–—]+/g, '업체 안내 채널')
+    .replace(/업체 안내 채널-+/g, '업체 안내 채널')
     .replace(/(?:^|\s)#{1,4}\s+/g, '\n\n')
+    .replace(/\n#\S+(?:\s+#\S+)*\s*$/g, '')
+    .replace(/\n(?:\*|\d+\.)\s*[^\n:]+:\s*[^.!?요다됨함\n]*$/g, '')
     .replace(/\*\*/g, '')
     .replace(/\s+\n/g, '\n')
     .replace(/\n{3,}/g, '\n\n')
