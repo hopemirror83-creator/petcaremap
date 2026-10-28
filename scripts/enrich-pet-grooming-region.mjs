@@ -581,6 +581,7 @@ function sentence(value, kind = 'good') {
   if (/진행$/.test(text)) return `${text.replace(/진행$/, '진행된다는')} 후기가 있습니다.`;
   if (/언급됨$/.test(text)) return `${text.replace(/언급됨$/, '언급됩니다')}.`;
   if (/진행됨$/.test(text)) return `${text.replace(/진행됨$/, '진행된다는')} 후기가 있습니다.`;
+  if (/느껴짐$/.test(text)) return `${text.replace(/느껴짐$/, '느껴진다는')} 후기가 있습니다.`;
   if (/필수적$/.test(text)) return `${text.replace(/필수적$/, '필요합니다')}`;
   if (/전화 예약은 필수$/.test(text)) return `${text.replace(/전화 예약은 필수$/, '전화로 예약하는 것이 좋습니다')}`;
   if (/사전 문의 권장$/.test(text)) return `${text.replace(/사전 문의 권장$/, '사전에 문의하는 편이 좋습니다')}`;
@@ -640,6 +641,9 @@ function cleanLongText(value) {
     .replace(/최상의\s*(선택|서비스|환경)/g, '좋은 $1')
     .replace(/최고의\s*(선택|서비스|환경)/g, '좋은 $1')
     .replace(/기술력을\s*자랑합니다/g, '기술력을 갖춘 것으로 소개됩니다')
+    .replace(/높은\s*만족도를\s*자랑합니다/g, '만족도가 높다는 후기가 있습니다')
+    .replace(/입소문이\s*자자한/g, '후기에서 자주 언급되는')
+    .replace(/뛰어난\s*실력/g, '미용 실력')
     .replace(/010\s*[-–—]*\s*[-–—]+/g, '업체 안내 채널')
     .replace(/(?:^|\s)#{1,4}\s+/g, '\n\n')
     .replace(/\*\*/g, '')
